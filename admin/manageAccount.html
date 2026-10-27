@@ -3,7 +3,7 @@
 	<head>
 		<title>Quản lý tài khoản</title>
 		<meta charset="utf-8">
-		
+
 		<link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/admin.css">
 		<link href="css/bootstrap-combined.min.css" rel="stylesheet">
@@ -12,24 +12,16 @@
 		<script type="text/javascript" src="js/account.js"></script>
 		<script type="text/javascript"  src="../js/w3data.js"></script>
 		<script type="text/javascript">
-		
+
 			$(function(){
 				if(login=="false"){
 				window.location = "admin.html";
 				}
 			});
 		</script>
-		<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script>
-		$(function() {
-			$("#datepicker").datepicker();
-		}
-		);
-		</script>-->
+
 		<style type="text/css">
-		
+
 		#tableDetail {
 			border-collapse: collapse;
 			border: 1px solid #ddd;
@@ -91,7 +83,7 @@
 				<a data-toggle="modal" href="#form-content"class="btn btn-primary fa fa-plus">&nbsp;
 				Thêm</a>
 				<input placeholder="Tìm kiếm theo tên và email..." id="search">
-				<!-- import/ export start -->
+
 				<div class="import" style="display: inline-block; float: right;">
 					<a id="a"></a>
 					<a class="btn btn-warning" href="javascript:void(0)"  onclick="Export_Product()">Export</a>
@@ -99,8 +91,8 @@
 					<input type="file" id="fileImport" title="Chọn tệp json để import" style="display: none">
 					<a class="btn btn-success" href="javascript:void(0)"  onclick = "Import_Product()">Import</a>
 				</div>
-				<!-- import/ export end -->
-				
+
+
 			</div>
 			<div class="datagrid table-responsive">
 				<table class="paginated"id="myTable">
@@ -127,7 +119,7 @@
 					</table></div>
 				</section>
 			</div>
-			<!--add start-->
+
 			<div id="form-content" class="modal hide fade in"style="display: none; ">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">×</a>
@@ -153,7 +145,7 @@
 										<span class="check fa fa-check"></span>
 										<small class="email-mess">Email đã tồn tại</small>
 									</li>
-									
+
 									<li class="nav-header">Loại tài khoản</li>
 									<li>
 										<select name="type" id="type">
@@ -170,9 +162,9 @@
 						<a href="#" class="btn" data-dismiss="modal">Đóng</a>
 					</div>
 				</div>
-				<!--add end-->
-				
-				<!-- Modal content -->
+
+
+
 			</div>
 			<script>
 				$(function(){
@@ -184,7 +176,7 @@
     						$(this).parent().find(".error").show();
     						$(this).removeClass("valid");
     						$(this).parent().find(".check").hide();
-    						
+
 						}else if(!$(this).val().match(re)){
     						$(this).addClass("no-valid");
     						$(this).parent().find(".error").show();
@@ -235,7 +227,7 @@
 						}
 					});
 					$("#name").change(function(){
-						
+
 						if($(this).val() == ""){
     						$(this).addClass("no-valid");
     						$(this).parent().find(".error").show();
@@ -264,7 +256,7 @@
 						}
 					});
 					$("#pass").change(function(){
-						
+
 						if($(this).val() == ""){
     						$(this).addClass("no-valid");
     						$(this).parent().find(".error").show();

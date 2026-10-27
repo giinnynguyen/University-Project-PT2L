@@ -36,7 +36,7 @@
 					<option>Tất cả</option>
 				</select>
 			</div>
-			<!-- import/ export start -->
+
 			<div class="import" style="display: inline-block; float: right;">
 				<a id="a"></a>
 				<a class="btn btn-warning" href="javascript:void(0)" onclick="Export_Product()">Export</a>
@@ -44,7 +44,7 @@
 				<input type="file" id="fileImport" title="Chọn tệp json để import" style="display: none">
 				<a class="btn btn-success" href="javascript:void(0)" onclick="Import_Product()">Import</a>
 			</div>
-			<!-- import/ export end -->
+
 		</div>
 		<div class="datagrid table-responsive">
 			<table class="paginated" id="myTable">
@@ -74,7 +74,7 @@
 		</div>
 	</section>
 	</div>
-	<!--add start-->
+
 	<div id="form-content" class="modal hide fade in" style="display: none; ">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
@@ -160,7 +160,7 @@
 									<li class="nav-header">Pin</li>
 									<li><input class="input-xlarge" value="" type="text" name="pin" /></li>
 									<li class="nav-header">HĐH</li>
-									<!-- <li><input class="input-xlarge"value=""type="text"name="hdh"/></li>					 -->
+
 									<input list="os" class="input-xlarge" name="hdh" type="text">
 									<datalist id="os">
 										<option value="Window">
@@ -181,16 +181,16 @@
 			<a href="#" class="btn" data-dismiss="modal">Đóng</a>
 		</div>
 	</div>
-	<!--add end-->
+
 	<div id="myModal" class="modal1">
-		<!-- Modal content -->
+
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<h1 id="h1"></h1>
 			<table id="tableDetail" class="table"></table>
 		</div>
 	</div>
-	<!-- Modal content -->
+
 	</div>
 	<script>
 		var cleave = new Cleave('.input-price', {
