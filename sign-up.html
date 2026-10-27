@@ -1,255 +1,275 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Đăng ký</title>
-		<link rel="icon" type="image/icon" href="img/icon.png">
-		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<link href="css/form.css" rel="stylesheet"/>
-		<script src="js/jquery.min.js"></script>
-		<script src="admin/js/data.js"></script>
-		<script src="js/w3data.js"></script>
-		<script src="admin/js/cleave.min.js"></script>
-		<script src="admin/js/cleave-phone.vn.js"></script>
-		<script src="admin/js/validate.js"></script>
-		<script>
-		$(function(){
-				$(".form").submit(function(e){
-				if(checkEmail == true && checkPass == true && checkUser == true && checkPhone == true && checkDate == true && checkAddress == true){
+
+<head>
+	<meta charset="utf-8">
+	<title>Đăng ký</title>
+	<link rel="icon" type="image/icon" href="img/icon.png">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/form.css" rel="stylesheet" />
+	<script src="js/jquery.min.js"></script>
+	<script src="admin/js/data.js"></script>
+	<script src="js/w3data.js"></script>
+	<script src="admin/js/cleave.min.js"></script>
+	<script src="admin/js/cleave-phone.vn.js"></script>
+	<script src="admin/js/validate.js"></script>
+	<script>
+		$(function () {
+			$(".form").submit(function (e) {
+				if (checkEmail == true && checkPass == true && checkUser == true && checkPhone == true && checkDate == true && checkAddress == true) {
 					console.log("submit");
 					var x = $(this).serializeArray();
-				var id=0;
-				
-				for (i=0;i< khach_hang.length;i++){
-					if(khach_hang[i].email == x[0].value){
-						$('.email-exist').css("display","inline-block");
-						e.preventDefault();
-						return false;
-					}else{
-						$('.email-exist').css("display","none");
+					var id = 0;
+
+					for (i = 0; i < khach_hang.length; i++) {
+						if (khach_hang[i].email == x[0].value) {
+							$('.email-exist').css("display", "inline-block");
+							e.preventDefault();
+							return false;
+						} else {
+							$('.email-exist').css("display", "none");
+						}
+						if (id < parseInt(khach_hang[i].ma_khach_hang)) {
+							id = parseInt(khach_hang[i].ma_khach_hang);
+						}
 					}
-					if(id < parseInt(khach_hang[i].ma_khach_hang)){
-					id =  parseInt(khach_hang[i].ma_khach_hang);
-					}
-				}
-				khach_hang.push({
-					"ma_khach_hang":(id+1),
-		"ten_khach_hang": x[4].value,
-		"phai": x[2].value,
-		"ngay_sinh": x[5].value,
-		"dia_chi":  x[6].value,
-		"dien_thoai":  x[3].value,
-		"email":  x[0].value,
-		"pass":  x[1].value
+					khach_hang.push({
+						"ma_khach_hang": (id + 1),
+						"ten_khach_hang": x[4].value,
+						"phai": x[2].value,
+						"ngay_sinh": x[5].value,
+						"dia_chi": x[6].value,
+						"dien_thoai": x[3].value,
+						"email": x[0].value,
+						"pass": x[1].value
 					});
-					window.localStorage.khach_hang  = encodeURIComponent(JSON.stringify(khach_hang));
+					window.localStorage.khach_hang = encodeURIComponent(JSON.stringify(khach_hang));
 					alert("Đăng ký thành công !");
-					window.location ="login-user.html";
+					window.location = "login-user.html";
 					e.preventDefault();
-				
-				
-			}else{
-				//email
-				if(checkEmail==false){
-					var email = $("#email").val();
-				var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				if(email == ""){
-					$('.email-invalid').css("display","none");
-			$('.email-empty').css("display","inline-block");
-			checkEmail = false;
-			}else if(!email.match(re)){
-			$('.email-empty').css("display","none");
-			$('.email-invalid').css("display","inline-block");
-			checkEmail = false;
-			}
-				else{
-			$('.email-empty').css("display","none");
-			$('.email-invalid').css("display","none");
-			checkEmail =  true;
-			}
-				}
-				//email end
-				//pass
-				if(checkPass == false){
-					var pass = $("#pass").val();
-				if(pass == "" ||pass.length < 6 ){
-			$('.pass-invalid').css("display","inline-block");
-			checkPass = false;
-			}
-				else{
-			$('.pass-invalid').css("display","none");
-			checkPass = true;
-			}
-				}
-				//pass end
-				//user 
-				if(checkUser == false){
-				var username = $("#username").val();
-				if(username == ""){
-			$('.user-empty').css("display","inline-block");
-				checkUser = false;
-			}else{
-			$('.user-empty').css("display","none");
-			checkUser = true;
-			}
-			}
-				//user end
-				//phone
-				if(checkPhone == false){
-					var phone = $("#phone").val();
-				if(phone == ""){
-			$('.phone-empty').css("display","inline-block");
-			checkPhone = false;
-			}
-				else{
-			$('.phone-empty').css("display","none");
-			checkPhone = true;
-			}
-				}
-				//end phone
 
-				//date
-				if(checkDate == false){
-					var date = $("#date").val();
-				if(phone == ""){
-			$('.date-empty').css("display","inline-block");
-			checkDate = false;
-			}
-				else{
-			$('.date-empty').css("display","none");
-			checkDate = true;
-			}
-				}
-				//end date
 
-				//address
-				if(checkAddress == false){
-					var address = $("#address").val();
-				if(address == ""){
-			$('.address-empty').css("display","inline-block");
-			checkAddress = false;
-			}
-				else{
-			$('.address-empty').css("display","none");
-			checkAddress = true;
-			}
-				}
-				//end address
+				} else {
+					//email
+					if (checkEmail == false) {
+						var email = $("#email").val();
+						var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+						if (email == "") {
+							$('.email-invalid').css("display", "none");
+							$('.email-empty').css("display", "inline-block");
+							checkEmail = false;
+						} else if (!email.match(re)) {
+							$('.email-empty').css("display", "none");
+							$('.email-invalid').css("display", "inline-block");
+							checkEmail = false;
+						}
+						else {
+							$('.email-empty').css("display", "none");
+							$('.email-invalid').css("display", "none");
+							checkEmail = true;
+						}
+					}
+					//email end
+					//pass
+					if (checkPass == false) {
+						var pass = $("#pass").val();
+						if (pass == "" || pass.length < 6) {
+							$('.pass-invalid').css("display", "inline-block");
+							checkPass = false;
+						}
+						else {
+							$('.pass-invalid').css("display", "none");
+							checkPass = true;
+						}
+					}
+					//pass end
+					//user 
+					if (checkUser == false) {
+						var username = $("#username").val();
+						if (username == "") {
+							$('.user-empty').css("display", "inline-block");
+							checkUser = false;
+						} else {
+							$('.user-empty').css("display", "none");
+							checkUser = true;
+						}
+					}
+					//user end
+					//phone
+					if (checkPhone == false) {
+						var phone = $("#phone").val();
+						if (phone == "") {
+							$('.phone-empty').css("display", "inline-block");
+							checkPhone = false;
+						}
+						else {
+							$('.phone-empty').css("display", "none");
+							checkPhone = true;
+						}
+					}
+					//end phone
 
-				return false;
-			}
+					//date
+					if (checkDate == false) {
+						var date = $("#date").val();
+						if (phone == "") {
+							$('.date-empty').css("display", "inline-block");
+							checkDate = false;
+						}
+						else {
+							$('.date-empty').css("display", "none");
+							checkDate = true;
+						}
+					}
+					//end date
+
+					//address
+					if (checkAddress == false) {
+						var address = $("#address").val();
+						if (address == "") {
+							$('.address-empty').css("display", "inline-block");
+							checkAddress = false;
+						}
+						else {
+							$('.address-empty').css("display", "none");
+							checkAddress = true;
+						}
+					}
+					//end address
+
+					return false;
+				}
 			});
 		});
-		
-		</script>
-		
-		
-		
-		<style>
-		.login-bg{
-		height: 750px;
+
+	</script>
+
+
+
+	<style>
+		.login-bg {
+			height: 750px;
 		}
-		.form{
+
+		.form {
 			width: 300px;
 			top: 20px;
 		}
-		input[type="radio"]{
+
+		input[type="radio"] {
 			width: 30px !important;
 		}
+
 		/*validate form start*/
 		.input-holder {
-		position: relative;
+			position: relative;
 		}
-		form #form-validate input, form #form-validate input textarea {
-		border: 2px solid #ccc;
-		border-radius: 4px;
-		padding: 10px;
-		width: 100%;
-		resize: none;
-		transition: .3s;
+
+		form #form-validate input,
+		form #form-validate input textarea {
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			padding: 10px;
+			width: 100%;
+			resize: none;
+			transition: .3s;
 		}
-		input:focus, textarea:focus {
-		border: 2px solid #999;
-		outline: none;
+
+		input:focus,
+		textarea:focus {
+			border: 2px solid #999;
+			outline: none;
 		}
+
 		textarea {
-		min-height: 100px;
+			min-height: 100px;
 		}
+
 		.error {
-		position: absolute;
-		z-index: 9;
-		display: none;
-		padding: 6px;
-		color: red;
-		text-align: center;
-		font-size: 25px;
-		top : 0;
-		right: 0;
+			position: absolute;
+			z-index: 9;
+			display: none;
+			padding: 6px;
+			color: red;
+			text-align: center;
+			font-size: 25px;
+			top: 0;
+			right: 0;
 		}
+
 		.is-valid {
-		border-color: #AAD661 !important;
+			border-color: #AAD661 !important;
 		}
+
 		.not-valid {
-		border-color: #D7595F;
-		transition: 0;
-		
+			border-color: #D7595F;
+			transition: 0;
+
 		}
-		input.validate.not-valid{
-		border: 1px solid red;
+
+		input.validate.not-valid {
+			border: 1px solid red;
 		}
+
 		.not-valid+.error {
-		display: block !important;
+			display: block !important;
 		}
+
 		.submit {
-		border: 2px solid #ccc;
-		border-radius: 4px;
+			border: 2px solid #ccc;
+			border-radius: 4px;
 		}
+
 		.submit:hover {
-		color: #AAD661;
-		border-color: #AAD661;
+			color: #AAD661;
+			border-color: #AAD661;
 		}
-		.email-exist,.phone-empty,.date-empty,.address-empty{
+
+		.email-exist,
+		.phone-empty,
+		.date-empty,
+		.address-empty {
 			color: red;
 			display: none;
 		}
+
 		/**validate end**/
-		</style>
-	</head>
-	<body>
-		<div class="logo wrap">
-			<a href="index.html"><img src="img/logo_form.png"/></a>
-		</div>
-		<div class="login-content">
-			<div class="login-bg">
-				<img src="img/background-login.jpg">
-				<form name="signup" class="form" method="post" >
-					
-					<div class="form-group" >
-						<label for="email" class="form-label form-label--required">
-							Email: <span class="text-muted">(abc@email.com)</span> </label>
-							<div class="form-addon" data-states-for="email">
-								<div class="form-addon__addon">
-									<span class="fa fa-envelope"></span>
-								</div>
-								<input type="text" id="email" name="email" class="form-input"
-								placeholder="Email">
-								<span
-								class="form-addon__icon icon-valid"></span> <span
+	</style>
+</head>
+
+<body>
+	<div class="logo wrap">
+		<a href="index.html"><img src="img/logo_form.png" /></a>
+	</div>
+	<div class="login-content">
+		<div class="login-bg">
+			<img src="img/background-login.jpg">
+			<form name="signup" class="form" method="post">
+
+				<div class="form-group">
+					<label for="email" class="form-label form-label--required">
+						Email: <span class="text-muted">(abc@email.com)</span> </label>
+					<div class="form-addon" data-states-for="email">
+						<div class="form-addon__addon">
+							<span class="fa fa-envelope"></span>
+						</div>
+						<input type="text" id="email" name="email" class="form-input" placeholder="Email">
+						<span class="form-addon__icon icon-valid"></span> <span
 							class="form-addon__icon icon-invalid"></span>
-						</div>
-						<div data-errors-for="email">
-							<small class="email-empty">
-							Email không được để trống. </small>
-							<small class="email-exist">
-							Email đã tồn tại </small>
-							<small class="email-invalid">
-							Email chưa đúng định dạng. </small>
-							<small class="email-message">
-							</small>
-						</div>
 					</div>
-					
-					<!--<div class="form-group" >
+					<div data-errors-for="email">
+						<small class="email-empty">
+							Email không được để trống. </small>
+						<small class="email-exist">
+							Email đã tồn tại </small>
+						<small class="email-invalid">
+							Email chưa đúng định dạng. </small>
+						<small class="email-message">
+						</small>
+					</div>
+				</div>
+
+				<!--<div class="form-group" >
 										<label for="username" class="form-label form-label--required">
 											Tài khoản: </label>
 										<div class="form-addon" data-states-for="username">
@@ -268,8 +288,8 @@
 												</small>
 						</div>
 				</div>-->
-				
-				
+
+
 				<div class="form-group">
 					<label for="password" class="form-label form-label--required">
 						Mật khẩu <span class="text-muted">(ít nhất 6 kí tự)</span>:
@@ -278,14 +298,13 @@
 						<div class="form-addon__addon">
 							<span class="fa fa-key"></span>
 						</div>
-						<input type="password" id="pass" name="pass"
-						class="form-input" placeholder="********"
-						> <span class="form-addon__icon icon-valid"></span>
+						<input type="password" id="pass" name="pass" class="form-input" placeholder="********"> <span
+							class="form-addon__icon icon-valid"></span>
 						<span class="form-addon__icon icon-invalid"></span>
 					</div>
 					<div data-errors-for="password">
 						<small class="pass-invalid">
-						Mật khẩu ít nhất 6 kí tự </small>
+							Mật khẩu ít nhất 6 kí tự </small>
 					</div>
 				</div>
 				<div class="form-group">
@@ -308,9 +327,7 @@
 						<div class="form-addon__addon">
 							<span class="fa fa-phone"></span>
 						</div>
-						<input type="text" id="phone" name="phone"
-						class="form-input input-phone"
-						>
+						<input type="text" id="phone" name="phone" class="form-input input-phone">
 					</div>
 					<small class="phone-empty">
 						Điện thoại không được rỗng </small>
@@ -323,14 +340,12 @@
 						<div class="form-addon__addon">
 							<span class="fa fa-male"></span>
 						</div>
-						<input type="text" name="name" id="username" 
-						class="form-input"
-						>
+						<input type="text" name="name" id="username" class="form-input">
 					</div>
 					<small class="user-empty">
 						Tên không được để trống </small>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="" class="form-label form-label--required">
 						Ngày sinh :
@@ -339,9 +354,7 @@
 						<div class="form-addon__addon">
 							<span class="fa fa-calendar"></span>
 						</div>
-						<input type="date" id="date" name="date"
-						class="form-input" maxlength="11"
-						>
+						<input type="date" id="date" name="date" class="form-input" maxlength="11">
 					</div>
 					<small class="date-empty">
 						Ngày sinh không được để trống </small>
@@ -354,9 +367,7 @@
 						<div class="form-addon__addon">
 							<span class="fa fa-map-marker"></span>
 						</div>
-						<input type="text" name="address"
-						class="form-input" id="address" 
-						>
+						<input type="text" name="address" class="form-input" id="address">
 					</div>
 					<small class="address-empty">
 						Địa chỉ không được để trống </small>
@@ -367,114 +378,115 @@
 					</div>
 					<input type="submit" class="button" id="register" value="Đăng ký">
 				</div>
-				
+
 			</form>
-			
+
 			<script>
-			var checkEmail= false;
-			//email
-					$("#email").blur(function(){
-				var email = $("#email").val();
-				var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				if(email == ""){
-					$('.email-invalid').css("display","none");
-			$('.email-empty').css("display","inline-block");
-			checkEmail = false;
-			}else if(!email.match(re)){
-			$('.email-empty').css("display","none");
-			$('.email-invalid').css("display","inline-block");
-			checkEmail = false;
-			}
-				else{
-			$('.email-empty').css("display","none");
-			$('.email-invalid').css("display","none");
-			checkEmail =  true;
-			}
-			});
-			//end email
+				var checkEmail = false;
+				//email
+				$("#email").blur(function () {
+					var email = $("#email").val();
+					var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					if (email == "") {
+						$('.email-invalid').css("display", "none");
+						$('.email-empty').css("display", "inline-block");
+						checkEmail = false;
+					} else if (!email.match(re)) {
+						$('.email-empty').css("display", "none");
+						$('.email-invalid').css("display", "inline-block");
+						checkEmail = false;
+					}
+					else {
+						$('.email-empty').css("display", "none");
+						$('.email-invalid').css("display", "none");
+						checkEmail = true;
+					}
+				});
+				//end email
 
-			//username
-			var checkUser = false;
-				$("#username").blur(function(){
-				var username = $("#username").val();
-				if(username == ""){
-			$('.user-empty').css("display","inline-block");
-				checkUser = false;
-			}else{
-			$('.user-empty').css("display","none");
-			checkUser = true;
-			}
-			});
-			//end user
+				//username
+				var checkUser = false;
+				$("#username").blur(function () {
+					var username = $("#username").val();
+					if (username == "") {
+						$('.user-empty').css("display", "inline-block");
+						checkUser = false;
+					} else {
+						$('.user-empty').css("display", "none");
+						checkUser = true;
+					}
+				});
+				//end user
 
-			//password
-			var checkPass = false;
-			$("#pass").blur(function(){
-			var pass = $("#pass").val();
-				if(pass == "" ||pass.length < 6 ){
-			$('.pass-invalid').css("display","inline-block");
-			checkPass = false;
-			}
-				else{
-			$('.pass-invalid').css("display","none");
-			checkPass = true;
-			}
-			});
-			//end pass
+				//password
+				var checkPass = false;
+				$("#pass").blur(function () {
+					var pass = $("#pass").val();
+					if (pass == "" || pass.length < 6) {
+						$('.pass-invalid').css("display", "inline-block");
+						checkPass = false;
+					}
+					else {
+						$('.pass-invalid').css("display", "none");
+						checkPass = true;
+					}
+				});
+				//end pass
 
-			//phone
-			var checkPhone = false;
-			$("#phone").blur(function(){
-			var phone = $("#phone").val();
-				if(phone == ""){
-			$('.phone-empty').css("display","inline-block");
-			checkPhone = false;
-			}
-				else{
-			$('.phone-empty').css("display","none");
-			checkPhone = true;
-			}
-			});
-			//end phone
+				//phone
+				var checkPhone = false;
+				$("#phone").blur(function () {
+					var phone = $("#phone").val();
+					if (phone == "") {
+						$('.phone-empty').css("display", "inline-block");
+						checkPhone = false;
+					}
+					else {
+						$('.phone-empty').css("display", "none");
+						checkPhone = true;
+					}
+				});
+				//end phone
 
-			//date
-			var checkDate = false;
-			$("#date").blur(function(){
-			var date = $("#date").val();
-				if(date == ""){
-			$('.date-empty').css("display","inline-block");
-			checkDate = false;
-			}
-				else{
-			$('.date-empty').css("display","none");
-			checkDate = true;
-			}
-			});
-			//end date
+				//date
+				var checkDate = false;
+				$("#date").blur(function () {
+					var date = $("#date").val();
+					if (date == "") {
+						$('.date-empty').css("display", "inline-block");
+						checkDate = false;
+					}
+					else {
+						$('.date-empty').css("display", "none");
+						checkDate = true;
+					}
+				});
+				//end date
 
-			//address
-			var checkAddress = false;
-			$("#address").blur(function(){
-			var address = $("#address").val();
-				if(address == ""){
-			$('.address-empty').css("display","inline-block");
-			checkAddress = false;
-			}
-				else{
-			$('.address-empty').css("display","none");
-			checkAddress = true;
-			}
-			});
-			//end address
-			
+				//address
+				var checkAddress = false;
+				$("#address").blur(function () {
+					var address = $("#address").val();
+					if (address == "") {
+						$('.address-empty').css("display", "inline-block");
+						checkAddress = false;
+					}
+					else {
+						$('.address-empty').css("display", "none");
+						checkAddress = true;
+					}
+				});
+				//end address
+
 			</script>
 			<script>
 				var cleave = new Cleave('.input-phone', {
-			phone: true,
-			phoneRegionCode: 'VN'
-			});
+					phone: true,
+					phoneRegionCode: 'VN'
+				});
 			</script>
 		</div>
 	</div>
 </body>
+
 </html>

@@ -1,9 +1,9 @@
 //jquery start
 
-$(function() {
-    $('.remodal-cancel').click(function(){
-    $('.white-menu').css('zIndex',999999);
-     $('.saleTitle').css('zIndex',999999);
+$(function () {
+    $('.remodal-cancel').click(function () {
+        $('.white-menu').css('zIndex', 999999);
+        $('.saleTitle').css('zIndex', 999999);
 
     });
     // $("#search").keyup(function(){
@@ -39,21 +39,21 @@ function search(displayArr, keyWord) {
 
 }
 
-function openCart(ma_san_pham){
-    $('.saleTitle').css('zIndex',-1);
-    $('.white-menu').css('zIndex',-1);
+function openCart(ma_san_pham) {
+    $('.saleTitle').css('zIndex', -1);
+    $('.white-menu').css('zIndex', -1);
     var productOpen = sanpham(ma_san_pham);
-    $('.imageProduct').attr('src',baseUrl + "/imageProduct/"+productOpen.image);
-    $('.nameProduct').html(""+productOpen.productName);
+    $('.imageProduct').attr('src', baseUrl + "/imageProduct/" + productOpen.image);
+    $('.nameProduct').html("" + productOpen.productName);
 
 
-    addToCart(ma_san_pham,1);
+    addToCart(ma_san_pham, 1);
 }
 
-function sanpham(ma_san_pham){
+function sanpham(ma_san_pham) {
     for (var i = 0; i < product.length; i++) {
-       if(product[i].ma_san_pham == ma_san_pham)
-        return product[i];
+        if (product[i].ma_san_pham == ma_san_pham)
+            return product[i];
     }
 }
 

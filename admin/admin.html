@@ -1,69 +1,76 @@
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Login Admin</title>
-		<link rel="icon" type="image/icon" href="img/icon.png">
-		<link rel="stylesheet" href="css/form.css">
-		<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-		<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-		<script type="text/javascript" src="js/data.js"></script>
-		<script>
-		$(function(){
+<!DOCTYPE html>
+<html lang="en">
 
-			if(localStorage.login && localStorage.login=="true"){
-				window.location= "manageProduct.html";
+<head>
+	<meta charset="UTF-8">
+	<title>Login Admin</title>
+	<link rel="icon" type="image/icon" href="img/icon.png">
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script>
+		$(function () {
+
+			if (localStorage.login && localStorage.login == "true") {
+				window.location = "manageProduct.html";
 			}
 		});
 
-		</script>
-	</head>
-	<body>
-		<div class="container">
-			<div class="login">
-				<h1 class="center"  style="padding-bottom:15px; padding-top: 15px;">LOGIN</h1>
-				<form action="" id="form-admin">
-					<div class="form-controll center"> <p>Hãy dùng tài khoản của bạn để đăng nhập</p></div>
-					<div class="form-controll"> <input type="text" placeholder="Tài khoản" class="font-awesome" name="user" \></div>
-					<div class="form-controll"> <input type="password" placeholder="Mật khẩu" size="35" name="pass"></div>
-					<div class="form-controll" style="text-align: center"><input type="submit" name="submit" value="Đăng nhập" /></div>
-				</form>
+	</script>
+</head>
 
-				<script>
-				$("#form-admin").submit( function(e){
-					var userName  = e.target.user.value;
-					var pass  = e.target.pass.value;
+<body>
+	<div class="container">
+		<div class="login">
+			<h1 class="center" style="padding-bottom:15px; padding-top: 15px;">LOGIN</h1>
+			<form action="" id="form-admin">
+				<div class="form-controll center">
+					<p>Hãy dùng tài khoản của bạn để đăng nhập</p>
+				</div>
+				<div class="form-controll"> <input type="text" placeholder="Tài khoản" class="font-awesome" name="user"
+						\></div>
+				<div class="form-controll"> <input type="password" placeholder="Mật khẩu" size="35" name="pass"></div>
+				<div class="form-controll" style="text-align: center"><input type="submit" name="submit"
+						value="Đăng nhập" /></div>
+			</form>
+
+			<script>
+				$("#form-admin").submit(function (e) {
+					var userName = e.target.user.value;
+					var pass = e.target.pass.value;
 					for (var i = 0; i < accounts.length; i++) {
-						if ( accounts[i].email==(userName) && accounts[i].pass==(pass)) {
+						if (accounts[i].email == (userName) && accounts[i].pass == (pass)) {
 							close();
 							localStorage.login = true;
 							localStorage.loaiAccount = 'admin';
 							window.open('manageProduct.html')
 						};
 					};
-					if(localStorage.login=="false"){
+					if (localStorage.login == "false") {
 						alert("Tài khoản hoặc mật khẩu không hợp lệ");
 					}
 					e.preventDefault();
 
 				});
-					// function check(form)/*function to check userid & password*/
-					// {
-					//  /*the following code checkes whether the entered userid and password are matching*/
-					// var userName  =  form.user.value   ;
-					// 		  var   pass    =   form.pass.value ;
-					// 		   for (var i = 0; i < accounts.length; i++) {
-					// 		  			if (  	accounts[i].email.localeCompare(userName) && accounts[i].pass.localeCompare(pass)) {
-					// 		  				close();
-					// 		 localStorage.login = true;
-					// 		 window.open('manageProduct.html')
-					// 		  			};
-					// 		   };
-					// 		    alert("Tài khoản hoặc mật khẩu không hợp lệ");/*displays error message*/
-					// }
-					</script>
-					
-				</div>
-			</div>
-		</body>
-		</html>
+				// function check(form)/*function to check userid & password*/
+				// {
+				//  /*the following code checkes whether the entered userid and password are matching*/
+				// var userName  =  form.user.value   ;
+				// 		  var   pass    =   form.pass.value ;
+				// 		   for (var i = 0; i < accounts.length; i++) {
+				// 		  			if (  	accounts[i].email.localeCompare(userName) && accounts[i].pass.localeCompare(pass)) {
+				// 		  				close();
+				// 		 localStorage.login = true;
+				// 		 window.open('manageProduct.html')
+				// 		  			};
+				// 		   };
+				// 		    alert("Tài khoản hoặc mật khẩu không hợp lệ");/*displays error message*/
+				// }
+			</script>
+
+		</div>
+	</div>
+</body>
+
+</html>

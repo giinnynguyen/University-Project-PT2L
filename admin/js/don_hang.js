@@ -1,10 +1,10 @@
 function hien_thi_don_hang(displayArr) {
-    String.prototype.capitalize = function() {
+    String.prototype.capitalize = function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
     var table = document.getElementById("product");
     table.innerHTML = "";
-    if (typeof(displayArr) == "undefined") {
+    if (typeof (displayArr) == "undefined") {
         displayArr = [];
     }
 
@@ -14,7 +14,7 @@ function hien_thi_don_hang(displayArr) {
         for (p in displayArr[i]) {
             var col = document.createElement('td');
             if (p == "trang_thai") {
-                
+
                 if (displayArr[i][p] == "0") {
                     col.textContent = "Chưa xử lý";
                 } else if (displayArr[i][p] == "1") {
@@ -22,14 +22,14 @@ function hien_thi_don_hang(displayArr) {
                 } else {
                     col.textContent = "Hủy đơn hàng";
                 }
-            }else if(p == "ma_khach_hang"){
+            } else if (p == "ma_khach_hang") {
                 var ten_khach_hang = tim_ten_khach_hang_theo_ma_kh(displayArr[i][p]);
                 col.textContent = ten_khach_hang;
             }
-            else if(p == "Tri_gia"){
-                col.textContent = parseInt(displayArr[i][p]).formatMoney(0,",",".");
+            else if (p == "Tri_gia") {
+                col.textContent = parseInt(displayArr[i][p]).formatMoney(0, ",", ".");
             }
-             else {
+            else {
                 col.textContent = displayArr[i][p];
             }
             row.appendChild(col);
@@ -55,16 +55,16 @@ function hien_thi_don_hang(displayArr) {
         table.appendChild(row);
     }
     //click button trash 
-    $("button.fa-trash").click(function() {
+    $("button.fa-trash").click(function () {
         delete_item($(this).attr("ma_don_hang"));
     });
-    $("button.fa-info").click(function() {
+    $("button.fa-info").click(function () {
         // alert($(this).attr("ma_don_hang"));
         showDetail($(this).attr("ma_don_hang"));
     });
 }
 
-$(function() {
+$(function () {
     hien_thi_don_hang(don_hang);
 });
 
@@ -95,10 +95,10 @@ function showDetail(ma_don_hang) {
     //neu nut edit duoc click
     setData(ma_don_hang);
     var span = document.getElementsByClassName("close");
-    $(".close").click(function() {
+    $(".close").click(function () {
         modal.style.display = "none";
     });
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }

@@ -39,64 +39,64 @@
                 if ($(this).val() == $(this).attr('checked-value')) {
                     classe = 'active';
                 } else
-                if ($(this).val() == $(this).attr('unchecked-value')) {
-                    classe = 'disable';
-                }
-            
+                    if ($(this).val() == $(this).attr('unchecked-value')) {
+                        classe = 'disable';
+                    }
+
                 if (classe == 'initial') {
                     var infoDeferido = $('<span class="info-slide disable" title="' + settings.textNotChecked + '"/>');
                     var infoIndeferido = $('<span class="info-slide active" title="' + settings.textChecked + '"/>');
                     uelement.find('.switch-content').append(infoDeferido);
                     uelement.find('.switch-content').append(infoIndeferido);
-                    
-                    infoDeferido.click(function(){
-                        var checkbox = $(uelement).find('input');                        
+
+                    infoDeferido.click(function () {
+                        var checkbox = $(uelement).find('input');
                         checkbox.val($(checkbox).attr('checked-value'));
-                        
+
                         $(uelement).find('span').html(settings.textChecked);
                         $(uelement).find('.switch-content').addClass('active');
                         $(uelement).find('.switch-content').removeClass('disable');
-                        
+
                         eventClick = true;
-                        
+
                         $(uelement).find('.info-slide').remove();
                     });
-                    
-                    infoDeferido.hover(function(){
+
+                    infoDeferido.hover(function () {
                         $(uelement).find('.switch-content').addClass('disable');
                         $(uelement).find('.switch-content').removeClass('initial');
-                    }, function(){
+                    }, function () {
                         $(uelement).find('.switch-content').addClass('initial');
                         $(uelement).find('.switch-content').removeClass('disable');
                     });
-                    
-                    infoIndeferido.click(function(){
-                        var checkbox = $(uelement).find('input');                        
+
+                    infoIndeferido.click(function () {
+                        var checkbox = $(uelement).find('input');
                         checkbox.val($(checkbox).attr('unchecked-value'));
-                        
+
                         $(uelement).find('span').html(settings.textChecked);
                         $(uelement).find('.switch-content').addClass('disable');
                         $(uelement).find('.switch-content').removeClass('active');
-                        
+
                         eventClick = true;
-                        
+
                         $(uelement).find('.info-slide').remove();
                     });
-                    
-                    infoIndeferido.hover(function(){
+
+                    infoIndeferido.hover(function () {
                         $(uelement).find('.switch-content').addClass('active');
                         $(uelement).find('.switch-content').removeClass('initial');
-                    }, function(){
+                    }, function () {
                         $(uelement).find('.switch-content').addClass('initial');
                         $(uelement).find('.switch-content').removeClass('active');
                     });
-                    
+
                     eventClick = false;
                 }
 
                 uelement.find('.switch-content')
-                        .addClass(classe)
-                        .addClass($(this).is(":disabled") ? 'disabled' : '');
+                    .addClass(classe)
+                    .addClass($(this).is(":disabled") ? 'disabled' : '');
                 uelement.append($(this).clone());
 
             } else {
@@ -104,13 +104,13 @@
 
                 uelement.find('span').html(isChecked ? settings.textChecked : settings.textNotChecked);
                 uelement.find('.switch-content')
-                        .addClass(isChecked ? 'active' : 'disable')
-                        .addClass($(this).is(":disabled") ? 'disabled' : '');
+                    .addClass(isChecked ? 'active' : 'disable')
+                    .addClass($(this).is(":disabled") ? 'disabled' : '');
                 uelement.append($(this).clone());
             }
 
             uelement.click(function () {
-                
+
                 if (!eventClick)
                     return;
 
@@ -129,7 +129,7 @@
                     }
                 } else {
                     var status = !checkbox.is(":checked");
-                    
+
                     checkbox.prop('checked', status);
                 }
 

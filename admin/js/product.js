@@ -1,5 +1,5 @@
-if(!login){
-     window.location= "admin.html";
+if (!login) {
+    window.location = "admin.html";
 }
 var editClicked = false;
 
@@ -12,7 +12,7 @@ function hien_thi_hang() {
 function hien_thi_san_pham(displayArr) {
     var table = document.getElementById("product");
     table.innerHTML = "";
-    if (typeof(displayArr) == "undefined") {
+    if (typeof (displayArr) == "undefined") {
         displayArr = [];
     }
     for (i = 0; i < displayArr.length; i++) {
@@ -36,7 +36,7 @@ function hien_thi_san_pham(displayArr) {
                 var td = document.createElement('td');
                 row.appendChild(td);
                 var imageProduct = document.createElement('img');
-                imageProduct.src = baseUrl+"/imageProduct/"+ displayArr[i][p];
+                imageProduct.src = baseUrl + "/imageProduct/" + displayArr[i][p];
                 imageProduct.id = "/imageProduct" + displayArr[i].ma_san_pham;
                 td.appendChild(imageProduct);
                 td.id = "image_row" + displayArr[i].ma_san_pham;
@@ -47,15 +47,15 @@ function hien_thi_san_pham(displayArr) {
                 productName.innerHTML = displayArr[i][p];
                 productName.id = "productName_row" + displayArr[i].ma_san_pham;
                 col.appendChild(productName);
-            } 
-            else if(p=="price"){
+            }
+            else if (p == "price") {
                 var col = document.createElement('td');
-                col.textContent = parseInt(displayArr[i][p]).formatMoney(0,",",".");
+                col.textContent = parseInt(displayArr[i][p]).formatMoney(0, ",", ".");
                 row.appendChild(col);
             }
-            else if(p=="sale"){
+            else if (p == "sale") {
                 var col = document.createElement('td');
-                col.textContent = parseInt(displayArr[i][p]).formatMoney(0,",",".");
+                col.textContent = parseInt(displayArr[i][p]).formatMoney(0, ",", ".");
                 row.appendChild(col);
             }
             else {
@@ -88,7 +88,7 @@ function hien_thi_san_pham(displayArr) {
                 }
             }
         }
-        
+
         var operate = document.createElement('td');
         var deleteBtn = document.createElement('button');
         var edit = document.createElement('button');
@@ -111,23 +111,23 @@ function hien_thi_san_pham(displayArr) {
 
     }
     //click button trash 
-    $("button.fa-trash").click(function() {
+    $("button.fa-trash").click(function () {
         delete_item($(this).attr("ma_san_pham"));
     });
     // end click button trash
     /*** click button edit***/
-    $("button.fa-edit").click(function() {
+    $("button.fa-edit").click(function () {
         // alert($(this).attr(ma_san_pham));
         edit_item($(this).attr("ma_san_pham"));
     });
     /*** end click button edit***/
     /*** click button save***/
-    $("button.fa-save").click(function() {
+    $("button.fa-save").click(function () {
         save_item($(this).attr("ma_san_pham"));
     });
     /*** end click button save***/
     /**showDetail start*/
-    $(".viewDetail").click(function() {
+    $(".viewDetail").click(function () {
         showDetail($(this).attr("ma_san_pham"));
     });
     /***showDetail end***/
@@ -141,15 +141,15 @@ function showDetail(ma_san_pham) {
     var btn = document.getElementById("myBtn" + ma_san_pham);
     modal.style.display = "block";
     //neu nut edit duoc click
-    if (editClicked == true) {} else {
+    if (editClicked == true) { } else {
         //neu edit chua duoc bam thi do du lieu tu product detail vao
         setDataDetail(ma_san_pham);
     }
     var span = document.getElementsByClassName("close");
-    $(".close").click(function() {
+    $(".close").click(function () {
         modal.style.display = "none";
     });
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -254,22 +254,22 @@ function edit_item(ma_san_pham) {
     tdSave.appendChild(save);
     tdSave.colSpan = "2";
     tdSave.style.textAlign = "center";
-            //su kien click nut cap nhat
-            var modal = document.getElementById('myModal');
-            save.onclick = function() {
-                    modal.style.display = "none";
-                }
-        //su kien click nut save end
+    //su kien click nut cap nhat
+    var modal = document.getElementById('myModal');
+    save.onclick = function () {
+        modal.style.display = "none";
+    }
+    //su kien click nut save end
     //edit detail end
 
 
     ///edit image start
-        //style input choose file
-        // var img = document.getElementById("imageProduct"+ma_san_pham);
-        // img.style.zIndex = "-1";
-        // var span = document.createElement('span');
-        // span.className = 'fa fa-upload';
-        // image_row.appendChild(span);
+    //style input choose file
+    // var img = document.getElementById("imageProduct"+ma_san_pham);
+    // img.style.zIndex = "-1";
+    // var span = document.createElement('span');
+    // span.className = 'fa fa-upload';
+    // image_row.appendChild(span);
 
     //edit image end
 
@@ -279,25 +279,25 @@ function edit_item(ma_san_pham) {
 
 
 /**xu ly edit hinh anh**/
-function previewFile(ma_san_pham){
-        var preview = document.getElementById("imageProduct"+ma_san_pham);
-        $('.fa-upload').css("z-index","-1");
-        preview.style.zIndex = "999";
-        console.log(preview.src);
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var reader  = new FileReader();
-       reader.onloadend = function () {
-           product[0].image = reader.result;
-           preview.src = reader.result;
-       }
-        console.log(preview.src);
-       if (file) {
-           reader.readAsDataURL(file); //reads the data as a URL
-       } else {
-           preview.src = "";
-       }
-       window.localStorage.product = encodeURIComponent(JSON.stringify(product));
-  }
+function previewFile(ma_san_pham) {
+    var preview = document.getElementById("imageProduct" + ma_san_pham);
+    $('.fa-upload').css("z-index", "-1");
+    preview.style.zIndex = "999";
+    console.log(preview.src);
+    var file = document.querySelector('input[type=file]').files[0]; //sames as here
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        product[0].image = reader.result;
+        preview.src = reader.result;
+    }
+    console.log(preview.src);
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
+    window.localStorage.product = encodeURIComponent(JSON.stringify(product));
+}
 /**end xu ly edit hinh anh **/
 
 /*function save*/
@@ -314,7 +314,7 @@ function save_item(ma_san_pham) {
     document.getElementById("company_row" + ma_san_pham).innerHTML = company_val;
     document.getElementById("price_row" + ma_san_pham).innerHTML = price_val;
     document.getElementById("sale_row" + ma_san_pham).innerHTML = sale_val;
-    
+
     document.getElementById("edit_button" + ma_san_pham).style.display = "inline-block";
     document.getElementById("save_button" + ma_san_pham).style.display = "none";
 
@@ -392,7 +392,7 @@ function save_item(ma_san_pham) {
 tra ve mot chuoi option, mot option la ten cua mot hang trong bang quan ly hang
 ***/
 function hangStringOption() {
-    String.prototype.capitalize = function() {
+    String.prototype.capitalize = function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
     var companyString = "";
@@ -408,7 +408,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-Number.prototype.formatMoney = function(c, d, t) {
+Number.prototype.formatMoney = function (c, d, t) {
     var n = this,
         c = isNaN(c = Math.abs(c)) ? 2 : c,
         d = d == undefined ? "." : d,
@@ -498,7 +498,7 @@ function filter(option) {
     if (option == "Tất cả") {
         arr = product;
     } else {
-        $.each(product, function() {
+        $.each(product, function () {
             if (this.company.toLowerCase() == option.toLowerCase())
                 arr.push(this);
         });
@@ -508,7 +508,7 @@ function filter(option) {
 
 /**function khi thay doi select company*/
 function changeSelectCompany() {
-    $('#selectCompany').change(function() {
+    $('#selectCompany').change(function () {
         var selectedOption = $(this).val();
         var arr = filter(selectedOption);
         hien_thi_san_pham(arr);
@@ -534,11 +534,11 @@ function search(displayArr, keyWord) {
 function pagination() {
     $(".pager").remove();
 
-    $('table.paginated').each(function() {
+    $('table.paginated').each(function () {
         var currentPage = 0;
         var numPerPage = 8;
         var $table = $(this);
-        $table.bind('repaginate', function() {
+        $table.bind('repaginate', function () {
             $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
         });
         $table.trigger('repaginate');
@@ -548,7 +548,7 @@ function pagination() {
         for (var page = 0; page < numPages; page++) {
             $('<span class="page-number"></span>').text(page + 1).bind('click', {
                 newPage: page
-            }, function(event) {
+            }, function (event) {
                 currentPage = event.data['newPage'];
                 $table.trigger('repaginate');
                 $(this).addClass('active').siblings().removeClass('active');
@@ -597,7 +597,7 @@ function Import_Product() {
     try {
         var fileToLoad = document.getElementById("fileImport").files[0];
         var fileReader = new FileReader();
-        fileReader.onload = function(fileLoadedEvent) {
+        fileReader.onload = function (fileLoadedEvent) {
             var textFromFileLoaded = fileLoadedEvent.target.result;
             var product_import = JSON.parse((textFromFileLoaded));
             var except;
@@ -626,19 +626,19 @@ function Import_Product() {
 
 }
 //jquery start
-$(function() {
+$(function () {
     hien_thi_hang();
     hien_thi_san_pham(product);
 
     changeSelectCompany();
 
     /***add click start**/
-    $("button#submit").click(function() {
+    $("button#submit").click(function () {
         add_item();
     });
     /**add click end**/
     /*event keyup input search*/
-    $("#search").keyup(function() {
+    $("#search").keyup(function () {
         if ($(this).val() != "")
             search(product, $(this).val());
         else

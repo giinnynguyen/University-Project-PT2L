@@ -1,4 +1,4 @@
-window.onscroll = function() {
+window.onscroll = function () {
 
     myfuntion();
 };
@@ -20,58 +20,58 @@ function nav() {
 }
 $(document)
     .ready(
-        function() {
+        function () {
             $(window)
-              .scroll(
-                  function() {
-                    if ($(this).scrollTop() > 200) {
-                      $(".gotop").fadeIn(200);
-                    } else {
-                      $(".gotop").fadeOut(200);
-                    }
-                    var body = document.body, html = document.documentElement;
+                .scroll(
+                    function () {
+                        if ($(this).scrollTop() > 200) {
+                            $(".gotop").fadeIn(200);
+                        } else {
+                            $(".gotop").fadeOut(200);
+                        }
+                        var body = document.body, html = document.documentElement;
 
-                    if ($(window).scrollTop()
-                        + $(window).height() == $(
-                        document).height()) {
-                      $(".goBottomBtn").fadeOut(200);
-                    } else {
-                      $(".goBottomBtn").fadeIn(200);
-                    }
-                  });
-          // Scroll Page to Top when clicked on "go to top" button
-          $(".gotop").click(function(event) {
-            event.preventDefault();
-            $("html, body").animate({
-              scrollTop : 0
+                        if ($(window).scrollTop()
+                            + $(window).height() == $(
+                                document).height()) {
+                            $(".goBottomBtn").fadeOut(200);
+                        } else {
+                            $(".goBottomBtn").fadeIn(200);
+                        }
+                    });
+            // Scroll Page to Top when clicked on "go to top" button
+            $(".gotop").click(function (event) {
+                event.preventDefault();
+                $("html, body").animate({
+                    scrollTop: 0
+                });
             });
-          });
-          // Scroll Page to Top when clicked on "go to bottom" button
-          $(".goBottomBtn").click(function(event) {
-            $("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
-          });
+            // Scroll Page to Top when clicked on "go to bottom" button
+            $(".goBottomBtn").click(function (event) {
+                $("html, body").animate({ scrollTop: $(document).height() - $(window).height() });
+            });
 
 
 
 
-            $("#register").click(function() {
+            $("#register").click(function () {
                 add_item();
             });
 
-            $(".shopping-cart").hover(function() {
-                    $(this).parent().addClass('relative');
-                    $(this).parent().append("<div class='box'><div class='arrow_box'>Chọn mua</div></div>");
-                },
-                function() {
+            $(".shopping-cart").hover(function () {
+                $(this).parent().addClass('relative');
+                $(this).parent().append("<div class='box'><div class='arrow_box'>Chọn mua</div></div>");
+            },
+                function () {
                     $(this).parent().removeClass('relative');
                     $(".box").remove();
                 });
 
-            $(".detail").hover(function() {
-                    $(this).parent().addClass('relative');
-                    $(this).parent().append("<div class='box1'><div class='arrow_box'>Chi tiết</div></div>");
-                },
-                function() {
+            $(".detail").hover(function () {
+                $(this).parent().addClass('relative');
+                $(this).parent().append("<div class='box1'><div class='arrow_box'>Chi tiết</div></div>");
+            },
+                function () {
                     $(this).parent().removeClass('relative');
                     $(".box1").remove();
                 });

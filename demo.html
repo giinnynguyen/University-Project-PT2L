@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
   <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
+
 <body>
-<script>
-  var data = ["09/06/2015", "25/06/2015", "22/06/2015", "25/07/2015", "18/05/2015"];
-data.sort(function(a,b) {
-  a = a.split('/').reverse().join('');
-  b = b.split('/').reverse().join('');
-  return a > b ? 1 : a < b ? -1 : 0;
-});
-console.log(data)
-</script>
+  <script>
+    var data = ["09/06/2015", "25/06/2015", "22/06/2015", "25/07/2015", "18/05/2015"];
+    data.sort(function (a, b) {
+      a = a.split('/').reverse().join('');
+      b = b.split('/').reverse().join('');
+      return a > b ? 1 : a < b ? -1 : 0;
+    });
+    console.log(data)
+  </script>
 </body>
+
 </html>

@@ -1,252 +1,269 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <script type="text/javascript" src="abc.js"></script>
-    <style type="text/css">
-      /*---------------------------------------------*\
+
+<head>
+  <title></title>
+  <script type="text/javascript" src="abc.js"></script>
+  <style type="text/css">
+    /*---------------------------------------------*\
     variables
 \*---------------------------------------------*/
-/*---------------------------------------------*\
+    /*---------------------------------------------*\
     styles
 \*---------------------------------------------*/
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
 
-html,
-body {
-  height: 100%;
-}
+    html,
+    body {
+      height: 100%;
+    }
 
-.wrapper {
-  min-height: 100%;
-}
+    .wrapper {
+      min-height: 100%;
+    }
 
-html {
-  font-size: 16px;
-  box-sizing: border-box;
-}
+    html {
+      font-size: 16px;
+      box-sizing: border-box;
+    }
 
-body {
-  font-size: 1rem;
-  line-height: 1.4;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  color: #002c3c;
-  background-color: #f4fcff;
-}
+    body {
+      font-size: 1rem;
+      line-height: 1.4;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      color: #002c3c;
+      background-color: #f4fcff;
+    }
 
-small {
-  font-size: .8rem;
-}
+    small {
+      font-size: .8rem;
+    }
 
-h1 {
-  display: inline-block;
-  font-family: "Francois One", sans-serif;
-  font-size: 3rem;
-  line-height: 1.2;
-  font-weight: 700;
-  margin: 0 0 .8rem 0;
-  border-bottom: 4px solid #31d47d;
-}
+    h1 {
+      display: inline-block;
+      font-family: "Francois One", sans-serif;
+      font-size: 3rem;
+      line-height: 1.2;
+      font-weight: 700;
+      margin: 0 0 .8rem 0;
+      border-bottom: 4px solid #31d47d;
+    }
 
-p {
-  margin: 0 0 2rem 0;
-}
+    p {
+      margin: 0 0 2rem 0;
+    }
 
-a {
-  color: #31d47d;
-  text-decoration: none;
-}
-a:focus, a:hover {
-  color: #24ae64;
-}
+    a {
+      color: #31d47d;
+      text-decoration: none;
+    }
 
-.text-muted, footer {
-  color: #a9bec6;
-}
+    a:focus,
+    a:hover {
+      color: #24ae64;
+    }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    .text-muted,
+    footer {
+      color: #a9bec6;
+    }
 
-.section-form {
-  padding: 0 20px;
-}
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-.form {
-  display: block;
-  max-width: 400px;
-}
+    .section-form {
+      padding: 0 20px;
+    }
 
-.form-group {
-  margin-bottom: 20px;
-}
+    .form {
+      display: block;
+      max-width: 400px;
+    }
 
-.form-label,
-.form-input {
-  display: block;
-  width: 100%;
-}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-.form-label {
-  cursor: pointer;
-  margin-bottom: 5px;
-}
+    .form-label,
+    .form-input {
+      display: block;
+      width: 100%;
+    }
 
-.form-label--required {
-  position: relative;
-}
-.form-label--required:before {
-  content: "*";
-  position: absolute;
-  left: -10px;
-  color: #f42866;
-}
+    .form-label {
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
 
-.form-input {
-  padding: 10px;
-  background-color: transparent;
-  border: 0;
-}
-.form-input:focus {
-  outline: none;
-  background-color: #f0f7f9;
-}
+    .form-label--required {
+      position: relative;
+    }
 
-.form-footer {
-  text-align: right;
-}
+    .form-label--required:before {
+      content: "*";
+      position: absolute;
+      left: -10px;
+      color: #f42866;
+    }
 
-.form-error {
-  color: #f42866;
-  margin-top: 5px;
-}
+    .form-input {
+      padding: 10px;
+      background-color: transparent;
+      border: 0;
+    }
 
-.button {
-  color: white;
-  white-space: nowrap;
-  background-color: #31d47d;
-  padding: 10px 20px;
-  border: 0;
-  border-radius: 2px;
-  transition: all 150ms ease-out;
-}
-.button:focus, .button:hover {
-  background-color: #219d5b;
-}
+    .form-input:focus {
+      outline: none;
+      background-color: #f0f7f9;
+    }
 
-.form-addon {
-  position: relative;
-  display: table;
-  width: 100%;
-  border: 1px solid #bcdae5;
-  background-color: #fff;
-  border-radius: 2px;
-}
-.form-addon .form-input,
-.form-addon .form-addon__addon {
-  display: table-cell;
-  vertical-align: middle;
-}
-.form-addon .form-input {
-  width: 100%;
-}
-.form-addon .form-addon__addon {
-  position: relative;
-  width: 40px;
-  text-align: center;
-}
-.form-addon .form-addon__addon:before {
-  content: "";
-  position: absolute;
-  top: 4px;
-  right: 0;
-  height: calc(100% - 8px);
-  border-right: 1px solid #bcdae5;
-}
+    .form-footer {
+      text-align: right;
+    }
 
-.form-addon__icon {
-  position: absolute;
-  color: #31d47d;
-  font-size: .8rem;
-  line-height: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px;
-}
+    .form-error {
+      color: #f42866;
+      margin-top: 5px;
+    }
 
-.toaster {
-  position: fixed;
-  z-index: 1;
-  top: 10px;
-  right: 10px;
-}
+    .button {
+      color: white;
+      white-space: nowrap;
+      background-color: #31d47d;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 2px;
+      transition: all 150ms ease-out;
+    }
 
-.toast {
-  color: #fff;
-  padding: 20px;
-  margin-bottom: 10px;
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: translateY(-10px) rotateY(40deg);
-  transition: all 300ms ease;
-}
-.toast.toast--show {
-  transform: translateY(0) rotateY(0);
-  opacity: 1;
-}
+    .button:focus,
+    .button:hover {
+      background-color: #219d5b;
+    }
 
-.toast--success {
-  background-color: #31d47d;
-}
+    .form-addon {
+      position: relative;
+      display: table;
+      width: 100%;
+      border: 1px solid #bcdae5;
+      background-color: #fff;
+      border-radius: 2px;
+    }
 
-.toast--error {
-  background-color: #f42866;
-}
+    .form-addon .form-input,
+    .form-addon .form-addon__addon {
+      display: table-cell;
+      vertical-align: middle;
+    }
 
-footer {
-  margin-top: 10px;
-}
+    .form-addon .form-input {
+      width: 100%;
+    }
 
-/*---------------------------------------------*\
+    .form-addon .form-addon__addon {
+      position: relative;
+      width: 40px;
+      text-align: center;
+    }
+
+    .form-addon .form-addon__addon:before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 0;
+      height: calc(100% - 8px);
+      border-right: 1px solid #bcdae5;
+    }
+
+    .form-addon__icon {
+      position: absolute;
+      color: #31d47d;
+      font-size: .8rem;
+      line-height: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+    }
+
+    .toaster {
+      position: fixed;
+      z-index: 1;
+      top: 10px;
+      right: 10px;
+    }
+
+    .toast {
+      color: #fff;
+      padding: 20px;
+      margin-bottom: 10px;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(-10px) rotateY(40deg);
+      transition: all 300ms ease;
+    }
+
+    .toast.toast--show {
+      transform: translateY(0) rotateY(0);
+      opacity: 1;
+    }
+
+    .toast--success {
+      background-color: #31d47d;
+    }
+
+    .toast--error {
+      background-color: #f42866;
+    }
+
+    footer {
+      margin-top: 10px;
+    }
+
+    /*---------------------------------------------*\
     GentleForm related styles
 \*---------------------------------------------*/
-.form-addon .form-addon__icon {
-  transform: translateY(0);
-  opacity: 0;
-  transition: transform 150ms ease, opacity 150ms ease;
-}
-.form-addon.is-valid [class*="icon-valid"], .form-addon.is-invalid [class*="icon-invalid"] {
-  transform: translateY(-50%);
-  opacity: 1;
-}
-.form-addon.is-invalid {
-  background-color: #fef4f7;
-  border-color: #f989ab;
-}
-.form-addon.is-invalid .form-addon__icon {
-  color: #f42866;
-}
-.form-addon.is-invalid .form-addon__addon:before {
-  border-color: #f989ab;
-}
+    .form-addon .form-addon__icon {
+      transform: translateY(0);
+      opacity: 0;
+      transition: transform 150ms ease, opacity 150ms ease;
+    }
 
+    .form-addon.is-valid [class*="icon-valid"],
+    .form-addon.is-invalid [class*="icon-invalid"] {
+      transform: translateY(-50%);
+      opacity: 1;
+    }
 
-    </style>
-  </head>
-  <body>
-    <div class="toaster"></div>
-    <main class="wrapper">
+    .form-addon.is-invalid {
+      background-color: #fef4f7;
+      border-color: #f989ab;
+    }
+
+    .form-addon.is-invalid .form-addon__icon {
+      color: #f42866;
+    }
+
+    .form-addon.is-invalid .form-addon__addon:before {
+      border-color: #f989ab;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="toaster"></div>
+  <main class="wrapper">
     <section class="section-form">
-    
+
       <form name="signup" class="form" novalidate>
 
         <div class="form-group">
@@ -257,24 +274,17 @@ footer {
             <div class="form-addon__addon">
               <span class="icon-email"></span>
             </div>
-            <input type="email"
-            id="email"
-            name="email"
-            class="form-input"
-            placeholder="andrew@email.com"
-            required>
+            <input type="email" id="email" name="email" class="form-input" placeholder="andrew@email.com" required>
             <span class="form-addon__icon icon-valid"></span>
             <span class="form-addon__icon icon-invalid"></span>
           </div>
           <div data-errors-for="email">
-            <small class="form-error"
-            data-errors-when="valueMissing">
-            This field is required.
+            <small class="form-error" data-errors-when="valueMissing">
+              This field is required.
             </small>
-            
-            <small class="form-error"
-            data-errors-when="typeMismatch">
-            Please enter a valid email address.
+
+            <small class="form-error" data-errors-when="typeMismatch">
+              Please enter a valid email address.
             </small>
           </div>
         </div>
@@ -286,76 +296,70 @@ footer {
             <div class="form-addon__addon">
               <span class="icon-password"></span>
             </div>
-            <input type="password"
-            id="password"
-            name="password"
-            class="form-input"
-            placeholder="********"
-            minlength="6"
-            required>
+            <input type="password" id="password" name="password" class="form-input" placeholder="********" minlength="6"
+              required>
             <span class="form-addon__icon icon-valid"></span>
             <span class="form-addon__icon icon-invalid"></span>
           </div>
           <div data-errors-for="password">
-            <small class="form-error"
-            data-errors-when="valueMissing">
-            This field is required.
+            <small class="form-error" data-errors-when="valueMissing">
+              This field is required.
             </small>
-            
-            <small class="form-error"
-            data-errors-when="tooShort">
-            Your password should be at least 6 characters long.
+
+            <small class="form-error" data-errors-when="tooShort">
+              Your password should be at least 6 characters long.
             </small>
           </div>
         </div>
-        
+
         <div class="form-footer">
           <button type="submit" class="button">Sign up</button>
         </div>
       </form>
 
     </section>
-    </main>
+  </main>
 
-    <script type="text/javascript">
-      // This is a demo of GentleForm:
-// https://github.com/Zhouzi/GentleForm
+  <script type="text/javascript">
+    // This is a demo of GentleForm:
+    // https://github.com/Zhouzi/GentleForm
 
-const toaster = document.getElementsByClassName('toaster')[0]
-const form = document.querySelector('form')
+    const toaster = document.getElementsByClassName('toaster')[0]
+    const form = document.querySelector('form')
 
-GentleForm(form, function (event) {
-  event.preventDefault()
-  
-  if (this.isValid()) addToast('success', 'Yay, the form is valid!')
-  else addToast('error', 'Oops, the form is invalid.')
-})
+    GentleForm(form, function (event) {
+      event.preventDefault()
 
-function addToast (type, message) {
-  const toast = document.createElement('div')
+      if (this.isValid()) addToast('success', 'Yay, the form is valid!')
+      else addToast('error', 'Oops, the form is invalid.')
+    })
 
-  toast.classList.add('toast')var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  toast.classList.add('toast--' + type)
-  toast.innerHTML = message
+    function addToast(type, message) {
+      const toast = document.createElement('div')
 
-  toaster.appendChild(toast)
+      toast.classList.add('toast')var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      toast.classList.add('toast--' + type)
+      toast.innerHTML = message
 
-  toast.addEventListener('transitionend', function (event) {
-    if (event.propertyName !== 'transform') return
+      toaster.appendChild(toast)
 
-    if (toast.classList.contains('toast--show')) {
-      setTimeout(function () {
-        toast.classList.remove('toast--show')
-      }, 3000)
-    } else {
-      toaster.removeChild(toast)
+      toast.addEventListener('transitionend', function (event) {
+        if (event.propertyName !== 'transform') return
+
+        if (toast.classList.contains('toast--show')) {
+          setTimeout(function () {
+            toast.classList.remove('toast--show')
+          }, 3000)
+        } else {
+          toaster.removeChild(toast)
+        }
+      }, false)
+
+      setTimeout(() => toast.classList.add('toast--show'), 100)
     }
-  }, false)
-
-  setTimeout(() => toast.classList.add('toast--show'), 100)
-}
 
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

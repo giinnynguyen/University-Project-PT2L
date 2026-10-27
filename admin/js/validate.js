@@ -1,8 +1,8 @@
 var err = false;
-var simpleValidation = function() {
+var simpleValidation = function () {
     var validateForm = $('form#validate-form');
 
-    validateForm.each(function() {
+    validateForm.each(function () {
         var validateForm = $(this);
         var validate = {};
         var validateThis = $(this).find('.validate');
@@ -13,7 +13,7 @@ var simpleValidation = function() {
         }
 
         $('.validate').blur(
-            function() {
+            function () {
                 var index = $(this).prevAll().length + 1;
                 var validateThisVal = $(this).val();
                 var validateThisType = $(this).attr(
@@ -81,7 +81,7 @@ var simpleValidation = function() {
                 }
             });
 
-        $("#submit").click(function() {
+        $("#submit").click(function () {
             // Prevents Default
             event.preventDefault();
 
@@ -117,25 +117,25 @@ function displayErr() {
         var type = el.getAttribute("validateType");
         var value = el.value;
         console.log(type);
-        if(type=="email"){
+        if (type == "email") {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if (!value.match(re) || value == ""){
-                el.className ="not-valid";
+            if (!value.match(re) || value == "") {
+                el.className = "not-valid";
             }
         }
-        if(type == "phone"){
-            if(value.length < 13 || value == ""){
-                el.className ="not-valid";
+        if (type == "phone") {
+            if (value.length < 13 || value == "") {
+                el.className = "not-valid";
             }
         }
-        if(type == "date"){
-            if(value.length < 10 || value == ""){
-                el.className ="not-valid";
+        if (type == "date") {
+            if (value.length < 10 || value == "") {
+                el.className = "not-valid";
             }
         }
-        else{
-            if(value == ""){
-                 el.className ="not-valid";
+        else {
+            if (value == "") {
+                el.className = "not-valid";
             }
         }
     });

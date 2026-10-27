@@ -1,20 +1,26 @@
- [
- {"ma_hang":"ASUS",
- "ten_hang":"AUS"
- },
- {"ma_hang":"DELL",
- "ten_hang":"DELL"
- },
- {"ma_hang":"ACER",
- "ten_hang":"ACER"
- },
- {"ma_hang":"APPLE",
- "ten_hang":"APPLE"
- },
- {"ma_hang":"LENOVO",
- "ten_hang":"LENOVO"
- },
- {"ma_hang":"HP",
- "ten_hang":"HP"
- }
+[
+    {
+        "ma_hang": "ASUS",
+        "ten_hang": "AUS"
+    },
+    {
+        "ma_hang": "DELL",
+        "ten_hang": "DELL"
+    },
+    {
+        "ma_hang": "ACER",
+        "ten_hang": "ACER"
+    },
+    {
+        "ma_hang": "APPLE",
+        "ten_hang": "APPLE"
+    },
+    {
+        "ma_hang": "LENOVO",
+        "ten_hang": "LENOVO"
+    },
+    {
+        "ma_hang": "HP",
+        "ten_hang": "HP"
+    }
 ]

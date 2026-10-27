@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>New product</title>
 	<meta charset="utf-8">
@@ -7,282 +8,290 @@
 	<link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css">
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/data.js"></script>
-	<script type="text/javascript"  src="../js/w3data.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript" src="../js/w3data.js"></script>
+	<script type="text/javascript">
 
-	 $(function(){
+		$(function () {
 
-	 	 if(login=="false"){
-	 	  window.location = "admin.html";
-	 	 }
-	 });
-</script>
+			if (login == "false") {
+				window.location = "admin.html";
+			}
+		});
+	</script>
 	<style>
-.content-left,.content-right{
-	display: inline-block;
-}
-.content-left{
-	float: left;
-}
-.content-right{
-	float: right;
-}
-.clear{
-	clear: both;
-}
-.content-bottom{
-	display: block;
-	background-color: #ccc;
-	padding: 5px;
-}
-.content-bottom caption{
-	font-weight: bold;
-	font-size: 20px;
-}
-#table{
-	border: 1px solid #ddd;
-	border-collapse: collapse;
-}
-#table tbody td{
-	border: 1px solid #ddd;
-	padding: 5px;
-}
-</style>
+		.content-left,
+		.content-right {
+			display: inline-block;
+		}
+
+		.content-left {
+			float: left;
+		}
+
+		.content-right {
+			float: right;
+		}
+
+		.clear {
+			clear: both;
+		}
+
+		.content-bottom {
+			display: block;
+			background-color: #ccc;
+			padding: 5px;
+		}
+
+		.content-bottom caption {
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		#table {
+			border: 1px solid #ddd;
+			border-collapse: collapse;
+		}
+
+		#table tbody td {
+			border: 1px solid #ddd;
+			padding: 5px;
+		}
+	</style>
 	<script type="text/javascript" src="js/Chart.js"></script>
 </head>
+
 <body>
 	<div w3-include-html="include/header.html"></div>
-		<section class="main-content" id="main-content">
-			<div id="chart">
-				<!-- BIểu đồ chart js -->
-			</div>
-			<script>
-			Number.prototype.format = function(n, x) {
+	<section class="main-content" id="main-content">
+		<div id="chart">
+			<!-- BIểu đồ chart js -->
+		</div>
+		<script>
+			Number.prototype.format = function (n, x) {
 				var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
 				return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
 			};
-			function write_table(data,labels){
+			function write_table(data, labels) {
 				var table = document.getElementById('table');
 				var kq = "<table><caption>Bảng thống kê</caption>";
-				var sum =0;
+				var sum = 0;
 				for (var i = 0; i < data.length; i++) {
-					kq+="<tr><td>"+labels[i]+":</td><td>"+(data[i]).format()+" đ</td></tr>";
-					sum+=data[i];
+					kq += "<tr><td>" + labels[i] + ":</td><td>" + (data[i]).format() + " đ</td></tr>";
+					sum += data[i];
 				}
-				kq+="<tr><td>Tổng :</td><td>"+(sum).format()+" đ</td></tr>";
-				kq+="</table>";
-				table.innerHTML=kq;
+				kq += "<tr><td>Tổng :</td><td>" + (sum).format() + " đ</td></tr>";
+				kq += "</table>";
+				table.innerHTML = kq;
 			}
-			function random_data(number){
-				 var data =[];
-				for (var i = 0; i <number ; i++) {
-					data.push(parseInt(Math.random()*1000)*1000);
+			function random_data(number) {
+				var data = [];
+				for (var i = 0; i < number; i++) {
+					data.push(parseInt(Math.random() * 1000) * 1000);
 				};
 
-				return  data;
+				return data;
 			}
-			
-			function  lay_du_lieu(data){
+
+			function lay_du_lieu(data) {
 				stringTime = document.getElementById('time').value;
-				if((stringTime.length==10)){
+				if ((stringTime.length == 10)) {
 					time = new Date(stringTime);
-				}else{
+				} else {
 					time = new Date();
 				}
 				var n = time.toLocaleDateString().split('/');
-				switch (data)
-				{
-					case 0 : {
-						var labelStringX ='';
-						var labelStringY ='Tiền bán sản phẩm bán ';
-						var title ='Doanh thu  tháng '+n[1] +" ("+n[2]+")";
-						var data= random_data(4);
-						var labels=["Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"];
-						
+				switch (data) {
+					case 0: {
+						var labelStringX = '';
+						var labelStringY = 'Tiền bán sản phẩm bán ';
+						var title = 'Doanh thu  tháng ' + n[1] + " (" + n[2] + ")";
+						var data = random_data(4);
+						var labels = ["Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"];
+
 						break;
 					}
-					case 1 : {
-						var labelStringX ='';
-						var labelStringY ='Tiền bán sản phẩm bán ';
-						var title ='Doanh thu năm ' +n[2] ;
-						var data=random_data(12);
-						var labels=["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+					case 1: {
+						var labelStringX = '';
+						var labelStringY = 'Tiền bán sản phẩm bán ';
+						var title = 'Doanh thu năm ' + n[2];
+						var data = random_data(12);
+						var labels = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
 						break;
 					}
-					case 2 : {
-						var labelStringX ='';
-						var labelStringY ='Tiền bán sản phẩm bán ';
-						var title ="Doanh thu tuần "+parseInt((time.getDate()/7)+1)+" tháng "+n[1] + " năm" +" "+n[2];
-						var data=random_data(7);
-						var labels=[ "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6","Thứ 7","Chủ Nhật"];
+					case 2: {
+						var labelStringX = '';
+						var labelStringY = 'Tiền bán sản phẩm bán ';
+						var title = "Doanh thu tuần " + parseInt((time.getDate() / 7) + 1) + " tháng " + n[1] + " năm" + " " + n[2];
+						var data = random_data(7);
+						var labels = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ Nhật"];
 						break;
 					}
-					default : {
-						var time_f =document.getElementById("time-from").value;
-						var time_t= document.getElementById("time-to").value;
-						if (time_f.length==10&&time_t.length==10) {
-							var data_time_f =new Date(time_f);
+					default: {
+						var time_f = document.getElementById("time-from").value;
+						var time_t = document.getElementById("time-to").value;
+						if (time_f.length == 10 && time_t.length == 10) {
+							var data_time_f = new Date(time_f);
 							var data_time_t = new Date(time_t);
 							var f = data_time_f.toLocaleDateString().split('/');
-							var t= data_time_t.toLocaleDateString().split('/');
-							
-							m = t[1]-f[1];
-							
-							if ( (f[2]<t[2] )||(m>0 && f[2]==t[2])) {
-								var labelStringX ='';
-								var labelStringY ='Tiền bán sản phẩm bán ';
-								var title ='Doanh thu tháng ' +f[1]+"("+f[2]+")" +" đến "+t[1]+"("+t[2]+")"  ;
-								var data=[];
-								var labels=[];
-								f_key =parseInt(f[2]);
-								t_key= parseInt(t[2]);
-								i = f[1];
-								key=parseInt(t[1]);
-								key+=1;
-								key=key%12;
-								do{
+							var t = data_time_t.toLocaleDateString().split('/');
 
-									data.push(parseInt(Math.random()*1000000));
-									labels.push("Tháng "+(i==0?12:i));
-									if(i==0){
-										f_key+=1;
+							m = t[1] - f[1];
+
+							if ((f[2] < t[2]) || (m > 0 && f[2] == t[2])) {
+								var labelStringX = '';
+								var labelStringY = 'Tiền bán sản phẩm bán ';
+								var title = 'Doanh thu tháng ' + f[1] + "(" + f[2] + ")" + " đến " + t[1] + "(" + t[2] + ")";
+								var data = [];
+								var labels = [];
+								f_key = parseInt(f[2]);
+								t_key = parseInt(t[2]);
+								i = f[1];
+								key = parseInt(t[1]);
+								key += 1;
+								key = key % 12;
+								do {
+
+									data.push(parseInt(Math.random() * 1000000));
+									labels.push("Tháng " + (i == 0 ? 12 : i));
+									if (i == 0) {
+										f_key += 1;
 									}
 									i++;
-									i%=12;
+									i %= 12;
 
-								}while(!(i==(key)&&f_key==t_key));
-								
+								} while (!(i == (key) && f_key == t_key));
+
 								console.log(data);
-							}else if(m==0 && f[2]==t[2]){
-								var labelStringX ='';
-								var labelStringY ='Tiền bán sản phẩm bán ';
-								var title ='Doanh thu  tháng '+t[1] +" ("+t[2]+")";
-								var data=random_data(4);
-								var labels=["Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"];
-							}else{
+							} else if (m == 0 && f[2] == t[2]) {
+								var labelStringX = '';
+								var labelStringY = 'Tiền bán sản phẩm bán ';
+								var title = 'Doanh thu  tháng ' + t[1] + " (" + t[2] + ")";
+								var data = random_data(4);
+								var labels = ["Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"];
+							} else {
 								alert("Vui lòng nhập đầy đủ thông tin!");
 								return;
 							}
-						}else{
+						} else {
 							alert("Vui lòng nhập đầy đủ thông tin!");
 							return;
 						}
 					}
 				}
-				chart(title,labelStringX,labelStringY,labels,data);
+				chart(title, labelStringX, labelStringY, labels, data);
 			}
-			function  chart(title,labelStringX,labelStringY,labels,data){
-				write_table(data,labels);
+			function chart(title, labelStringX, labelStringY, labels, data) {
+				write_table(data, labels);
 				var chart = document.getElementById("chart");
-				chart.innerHTML ="<canvas id=\"myChart\" ></canvas>"
+				chart.innerHTML = "<canvas id=\"myChart\" ></canvas>"
 				var ctx = document.getElementById("myChart");
-				ctx.value=null;
+				ctx.value = null;
 				var myChart = new Chart(ctx, {
 					type: 'bar',
 					data: {
-						labels: labels ,
+						labels: labels,
 						datasets: [{
 							label: 'Doanh thu',
 							data: data,
 							backgroundColor: [
-						'rgba(254, 241, 15, 0.2)',
-						'rgba(145, 195, 106, 0.2)',
-						'rgba(45, 253, 255, 0.2)',
-						'rgba(255, 159, 64, 0.2)',
-						'rgba(1, 106, 172, 0.2)',
-						'rgba(0, 0, 0, 0.2)',
-						'rgba(210, 0, 129, 0.2)',
-						'rgba(1, 106, 72, 0.2)',
+								'rgba(254, 241, 15, 0.2)',
+								'rgba(145, 195, 106, 0.2)',
+								'rgba(45, 253, 255, 0.2)',
+								'rgba(255, 159, 64, 0.2)',
+								'rgba(1, 106, 172, 0.2)',
+								'rgba(0, 0, 0, 0.2)',
+								'rgba(210, 0, 129, 0.2)',
+								'rgba(1, 106, 72, 0.2)',
 
-						'rgba(105, 24, 103, 0.2)',
-						'rgba(129, 77, 55, 0.2)',
-						'rgba(206, 27, 33, 0.2)',
-						
-						'rgba(255, 9, 6, 0.2)'
-						],
-						borderColor: [
-						'rgba(254,241,15,1)',
-						'rgba(145, 195, 106, 1)',
-						'rgba(45, 253, 255, 1)',
-						'rgba(255, 159, 64, 1)',
-						'rgba(1, 106, 172, 1)',
-						'rgba(0, 0, 0, 1)',
-						'rgba(210, 0, 129, 1)',
-						'rgba(1, 106, 72, 1)',
+								'rgba(105, 24, 103, 0.2)',
+								'rgba(129, 77, 55, 0.2)',
+								'rgba(206, 27, 33, 0.2)',
 
-						'rgba(105,24,103,1)',
-						'rgba(129, 77, 55, 1)',
-						'rgba(206, 27, 33, 1)',
-						'rgba(255, 9, 6, 1)'
-						],
-						borderWidth: 2.5
-					}]
-				},
-				options: {
-					responsive: true,
-					title: {
-						display: true,
-						position:'bottom',
-						text: title,
-						fontSize: 20,
-						fontFamily: "'Comic Sans MS', cursive, sans-serif"
-			},// end title
-			scales: {
-				xAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: labelStringX
-					}
-				}],
-				yAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: labelStringY
+								'rgba(255, 9, 6, 0.2)'
+							],
+							borderColor: [
+								'rgba(254,241,15,1)',
+								'rgba(145, 195, 106, 1)',
+								'rgba(45, 253, 255, 1)',
+								'rgba(255, 159, 64, 1)',
+								'rgba(1, 106, 172, 1)',
+								'rgba(0, 0, 0, 1)',
+								'rgba(210, 0, 129, 1)',
+								'rgba(1, 106, 72, 1)',
+
+								'rgba(105,24,103,1)',
+								'rgba(129, 77, 55, 1)',
+								'rgba(206, 27, 33, 1)',
+								'rgba(255, 9, 6, 1)'
+							],
+							borderWidth: 2.5
+						}]
 					},
-					ticks: {
-						suggestedMin: 0,
-						suggestedMax: 60000,
+					options: {
+						responsive: true,
+						title: {
+							display: true,
+							position: 'bottom',
+							text: title,
+							fontSize: 20,
+							fontFamily: "'Comic Sans MS', cursive, sans-serif"
+						},// end title
+						scales: {
+							xAxes: [{
+								display: true,
+								scaleLabel: {
+									display: true,
+									labelString: labelStringX
+								}
+							}],
+							yAxes: [{
+								display: true,
+								scaleLabel: {
+									display: true,
+									labelString: labelStringY
+								},
+								ticks: {
+									suggestedMin: 0,
+									suggestedMax: 60000,
+								}
+							}]
+						},
+						tooltips: {
+							callbacks: {
+								label: function (tooltipItem, data) {
+									var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
+									var label = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+									//console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + "-" + label);
+									return datasetLabel + ': ' + label.toLocaleString() + " đ";
+								}
+							}
+						}
 					}
-				}]
-			},
-			tooltips: {
-				callbacks: {
-					label: function(tooltipItem, data) {
-						var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
-						var label = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-			//console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + "-" + label);
-			return datasetLabel + ': ' + label.toLocaleString() + " đ";
-		}
-	}
-}
-}
-});
-}
-</script>
+				});
+			}
+		</script>
 
-<div class="content">
-	<div class="content-left">
-		<input type="date" id="time">
-		<button  onclick="lay_du_lieu(2)" >Xem theo tuần</button>
-		<button  onclick="lay_du_lieu(0)" >Xem theo tháng</button>
-		<button  onclick="lay_du_lieu(1)" >Xem theo năm</button>
-	</div>
-	<div class="content-right">
+		<div class="content">
+			<div class="content-left">
+				<input type="date" id="time">
+				<button onclick="lay_du_lieu(2)">Xem theo tuần</button>
+				<button onclick="lay_du_lieu(0)">Xem theo tháng</button>
+				<button onclick="lay_du_lieu(1)">Xem theo năm</button>
+			</div>
+			<div class="content-right">
 
-		Từ <input type="date" id="time-from"> đến <input type="date"  id="time-to">
-		<button onclick="lay_du_lieu(3)" >Xem theo thời gian</button>
-	</div>
-	<div class="clear"></div>
-	<div class="content-bottom" id="table">
-		<!-- Bảng thống kê -->
+				Từ <input type="date" id="time-from"> đến <input type="date" id="time-to">
+				<button onclick="lay_du_lieu(3)">Xem theo thời gian</button>
+			</div>
+			<div class="clear"></div>
+			<div class="content-bottom" id="table">
+				<!-- Bảng thống kê -->
 
+			</div>
+		</div>
+	</section>
 	</div>
-</div>
-</section>
-</div>
 </body>
+
 </html>
 <script type="text/javascript"> lay_du_lieu(0);</script>
-    

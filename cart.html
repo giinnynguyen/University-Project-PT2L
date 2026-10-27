@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Giỏ hàng</title>
@@ -15,39 +16,39 @@
   <script src="js/javascript.js" type="text/javascript"></script>
 
   <link rel="stylesheet" href="css/remodal.css">
-<link rel="stylesheet" href="css/remodal-default-theme.css">
-<script src="js/remodal.min.js"></script>
-<link rel="stylesheet" href="css/remodal.css">
-<link rel="stylesheet" href="css/remodal-default-theme.css">
-<script src="js/remodal.min.js"></script>
+  <link rel="stylesheet" href="css/remodal-default-theme.css">
+  <script src="js/remodal.min.js"></script>
+  <link rel="stylesheet" href="css/remodal.css">
+  <link rel="stylesheet" href="css/remodal-default-theme.css">
+  <script src="js/remodal.min.js"></script>
   <script type="text/javascript">
-  function xoa_gio_hang(ma_san_pham){
-    for (var i = 0; i < loginUser.cart.length; i++) {
-     if(loginUser.cart[i].ma_san_pham==ma_san_pham){
-            loginUser.cart.splice(i,1);
-      break;
+    function xoa_gio_hang(ma_san_pham) {
+      for (var i = 0; i < loginUser.cart.length; i++) {
+        if (loginUser.cart[i].ma_san_pham == ma_san_pham) {
+          loginUser.cart.splice(i, 1);
+          break;
+        }
+
+      }
+
+      console.log(loginUser.cart);
+      gio_hang();
+
     }
 
-  }
- 
-  console.log(loginUser.cart);
-  gio_hang();
+    function gio_hang() {
+      countCart();
+      var string = "";
+      var sum = 0;
+      for (var i = 0; i < loginUser.cart.length; i++) {
+        sum += (loginUser.cart[i].price * loginUser.cart[i].count);
+        string += "<tr><td><img  style='width: 46%;height:initial;' src=" + baseUrl + "/imageProduct/" + loginUser.cart[i].image + " /></td><td>" + loginUser.cart[i].ten_san_pham + "</td><td>" + (parseInt(loginUser.cart[i].price)).formatMoney(0, ",", ".") + "</td><td>" + loginUser.cart[i].count + "</td><td>" + (loginUser.cart[i].price * loginUser.cart[i].count).formatMoney(0, ",", ".") + "</td><td><button onclick=\"xoa_gio_hang(" + loginUser.cart[i].ma_san_pham + ")\"><span class=\"fa fa-trash\"></span></button></td></tr>"
+      };
+      $("tbody").html(string);
+      $("b.sum").html(sum.formatMoney(0, ",", "."));
 
-}
-
-function gio_hang(){
-   countCart();
- var string  = "";
- var sum  = 0;
- for (var i = 0; i < loginUser.cart.length; i++) {
-   sum+=(loginUser.cart[i].price*loginUser.cart[i].count);
-   string+="<tr><td><img  style='width: 46%;height:initial;' src="+baseUrl+"/imageProduct/"+loginUser.cart[i].image +" /></td><td>"+loginUser.cart[i].ten_san_pham+"</td><td>"+(parseInt(loginUser.cart[i].price)).formatMoney(0,",",".")+"</td><td>"+loginUser.cart[i].count+"</td><td>"+(loginUser.cart[i].price*loginUser.cart[i].count).formatMoney(0,",",".")+"</td><td><button onclick=\"xoa_gio_hang("+loginUser.cart[i].ma_san_pham+")\"><span class=\"fa fa-trash\"></span></button></td></tr>"
- };
- $("tbody").html(string);
- $("b.sum").html(sum.formatMoney(0,",","."));
-
-}
-$(function(){
+    }
+    $(function () {
 
 
 
@@ -55,38 +56,45 @@ $(function(){
 
 
 
- gio_hang();
-});
+      gio_hang();
+    });
 
 
 
-</script>
+  </script>
 
 
-<style type="text/css">
-.fa-trash{
-  font-size: 20px;
-  padding: 6px;
-}
-.datagrid table tbody tr td:first-child{
-  width: 200px;
-}
-.datagrid table tbody tr td:first-child img{
-  width: 90%;
-  height:100%;
-}
-.datagrid table tbody tr{
-  height: 150px;
-}
-.datagrid table td{
-  padding: 0;
-  text-align: center;}
-  .datagrid table tfoot tr{
-    border-top: 1px solid #7BEBD8;
-    background-color: #E1EEF4;
-  }
+  <style type="text/css">
+    .fa-trash {
+      font-size: 20px;
+      padding: 6px;
+    }
+
+    .datagrid table tbody tr td:first-child {
+      width: 200px;
+    }
+
+    .datagrid table tbody tr td:first-child img {
+      width: 90%;
+      height: 100%;
+    }
+
+    .datagrid table tbody tr {
+      height: 150px;
+    }
+
+    .datagrid table td {
+      padding: 0;
+      text-align: center;
+    }
+
+    .datagrid table tfoot tr {
+      border-top: 1px solid #7BEBD8;
+      background-color: #E1EEF4;
+    }
   </style>
 </head>
+
 <body>
   <!-- header -->
   <div w3-include-html="include/header.html"></div>
@@ -95,10 +103,10 @@ $(function(){
   <!-- nav -->
   <div w3-include-html="include/nav.html"></div>
   <!-- nav end -->
-  <div class="body-page" id="body"  style="margin-bottom: 50px">
+  <div class="body-page" id="body" style="margin-bottom: 50px">
     <div class="container">
       <hr>
-      <h3 >Giỏ hàng của tôi</h3>
+      <h3>Giỏ hàng của tôi</h3>
       <div class="datagrid">
         <table>
           <thead>
@@ -112,7 +120,7 @@ $(function(){
             </tr>
           </thead>
           <tbody>
-           <!--  <tr>
+            <!--  <tr>
               <td>data</td>
               <td>data</td>
               <td>data</td>
@@ -126,22 +134,26 @@ $(function(){
           <tfoot>
             <tr>
               <td colspan="2">
-                <span>Tổng tiền:  <b class="sum"></b> <b>VND</b></span>
+                <span>Tổng tiền: <b class="sum"></b> <b>VND</b></span>
               </td>
               <td colspan="4">
                 <ul>
                   <li><a href="."><span>Chọn thêm</span></a></li>
-                  <li><a href="javascript:void(0)"  onclick="loginUser.cart=[];localStorage.loginUser = encodeURIComponent(JSON.stringify(loginUser));window.location.reload();"><span>Xóa hết giỏ hàng</span></a></li>
-                  <li><a href="thanhtoan.html"  ><span>Thanh toán</span></a></li>
+                  <li><a href="javascript:void(0)"
+                      onclick="loginUser.cart=[];localStorage.loginUser = encodeURIComponent(JSON.stringify(loginUser));window.location.reload();"><span>Xóa
+                        hết giỏ hàng</span></a></li>
+                  <li><a href="thanhtoan.html"><span>Thanh toán</span></a></li>
                 </ul>
               </td>
             </tr>
           </tfoot>
-        </table></div>
-      </div><!--the-end-contaner-->
-    </div><!--the-end-body-page-->
+        </table>
+      </div>
+    </div><!--the-end-contaner-->
+  </div><!--the-end-body-page-->
 
-    <div w3-include-html="include/footer.html"></div>
-  </body>
-  </html>
-  <script type="text/javascript">w3IncludeHTML();</script>
+  <div w3-include-html="include/footer.html"></div>
+</body>
+
+</html>
+<script type="text/javascript">w3IncludeHTML();</script>
