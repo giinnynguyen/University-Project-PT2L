@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QL đơn hàng</title>
+<meta charset="utf-8">
+<link rel="icon" type="image/icon" href="../img/icon.png">
+
+<link rel="stylesheet" type="text/css"
+	href="../font-awesome/css/font-awesome.min.css">
+<link href="css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="js/cleave.min.js"></script>
+<script src="js/cleave-phone.vn.js"></script>
+<script src="js/data.js"></script>
+<script type="text/javascript"  src="../js/w3data.js"></script>
+<script type="text/javascript">
+ $(function(){
+
+	 	 if(login=="false"){
+	 	  window.location = "admin.html";
+	 	 }
+	 });
+</script>
+<style>
+input[type="text"] {
+	width: 100%;
+}
+.gender {
+	display: inline-block;
+}
+#gender {
+	width: 80px;
+}
+#ctdh{
+	list-style: none;
+}
+.abc{
+	width: 100%;
+}
+.abc thead th{
+	text-align: left;
+}
+.abc tr{
+	border-bottom: 1px solid #ddd;
+}
+.abc td{
+	padding: 10px 0;
+}
+.abc td:first-child{
+	width: 10%;
+}
+.abc td:nth-child(2){
+	width: 50%;
+}
+.abc td:nth-child(3){
+	width: 15%;
+}
+.abc td:nth-child(4){
+	width: 15%;
+}
+.abc td:nth-child(5){
+	width: 10%;
+}
+
+textarea{
+	width: 100%;
+	resize: none;
+}
+</style>
+</head>
+<body>
+<div w3-include-html="include/header.html"></div>
+		<section class="main-content" id="main-content">
+			<div class="content-header">
+				<!-- <a data-toggle="modal" href="#form-content"
+					class="btn btn-primary fa fa-plus">&nbsp; Thêm</a> -->
+					 <input
+					placeholder="Tìm kiếm..." id="search" style="visibility: hidden;">
+				
+				<!-- import/ export start -->
+				<!-- <div class="import" style="display: inline-block; float: right;">
+				
+					<a id="a"></a> <a class="btn btn-warning" href="javascript:void(0)"
+						onclick="Export_Product()">Export</a> <label for="fileImport"
+						class="btn btn-success">Chọn file để import</label> <input
+						type="file" id="fileImport" title="Chọn tệp json để import"
+						style="display: none"> <a class="btn btn-success"
+						href="javascript:void(0)" onclick="Import_Product()">Import</a>
+				</div> -->
+				<!-- import/ export end -->
+			</div>
+			<div class="datagrid">
+				<table class="paginated" id="table_kh1">
+					<thead>
+						<tr>
+						<th>Mã đơn hàng</th>
+							<th>Ngày đặt hàng</th>
+							<th>Khách hàng</th>
+							<th>Trị giá (VNĐ)</th>
+							<th>Hình thức thanh toán</th>
+							<th>Ghi chú</th>
+							<th>Trạng thái</th>
+							<th>Thao tác</th>
+						</tr>
+					</thead>
+					<tbody id="product">
+					</tbody>
+					<tfoot>
+					</tfoot>
+				</table>
+			</div>
+			</section>
+	</div>
+	<!--add start-->
+	<div id="form-content" class="modal hide fade in"
+		style="display: none;">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+			<h3>Khách hàng mới</h3>
+		</div>
+		<div>
+			<form class="contact validate-form" id="validate-form" name="form">
+				<fieldset>
+					<div class="modal-body">
+						<ul class="nav nav-list">
+							<li class="nav-header">Tên khách hàng</li>
+							<li class="input-holder"><input class="validate" validateType="name" value="" type="text"
+								name="name" required/>
+								<span class="error">&times</span>
+								</li>
+								
+							<li style="display: inline-block" class="nav-header">Phái :</li>
+							<li style="display: inline-block"><input type="radio" name="gender" value="Nam" checked>Nam &nbsp; <input
+								type="radio" name="gender" value="Nữ">Nữ</li>
+								
+							<li class="nav-header">Ngày sinh (dd/mm/yyyy)</li>
+							<li class="input-holder"><input validateType="date" class="validate input-date" type="text" name="birthday">
+							<span class="error">&times</span>
+							</li>
+							
+							<li class="nav-header">Địa chỉ</li>
+							<li class="input-holder"><input type=text validateType="address" class="validate"
+								name="address"><span class=error>&times</span>
+								</li>
+								
+							<li class="nav-header">Điện thoại (096 612 3456 hoặc 0123 456 7892)</li>
+							<li class="input-holder"><input validateType="phone" class="input-element validate" value=""
+								type="text" name="phone" />
+								<span class=error>&times</span>
+								</li>
+								
+							<li class="nav-header">Emai (someone@xyz.com)l</li>
+							<li class="input-holder"><input validateType="email" class=" validate" value="" type="text"
+								name="email"/>
+								<span class=error>&times</span>
+								</li>
+						</ul>
+					</div>
+				</fieldset>
+				
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-success submit" id="submit">Thêm</button>
+			<a href="#" class="btn" data-dismiss="modal">Đóng</a>
+		</div>
+	</div>
+	<!--add end-->
+	<div id="myModal"class="modal1">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<h1 id="h1">Chi tiết đơn hàng</h1>
+						<table class="abc">
+							<thead>
+								<tr>
+									<th>STT</th>
+									<th>Tên sản  phẩmm</th>
+									<th>số lượng</th>
+									<th>Ðõn giá</th>
+								</tr>
+							</thead>
+							<tbody id="ctdh">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				
+				
+	<script>
+	var cleave = new Cleave('.input-element', {
+	    phone: true,
+	    phoneRegionCode: 'VN'
+	});
+	var cleave1 = new Cleave('.input-date', {
+	    date: true,
+	    datePattern: ['d', 'm', 'Y']
+	});
+	</script>
+<!-- validate form tao khách hang start -->
+	<script src="js/validate.js"></script>
+	<!-- validate form tao khách hang end -->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/don_hang.js"></script>
+</body>
+</html>

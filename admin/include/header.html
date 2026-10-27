@@ -1,0 +1,81 @@
+
+<div id="taskbar">
+		<ul>
+			<li><a href=""><span class="fa fa-user"></span></a>
+				<ul class="submenu">
+					<li><a href="">Profile</a></li>
+					<li><a href="">Edit Profile</a></li>
+					<li><a href="javascript:void(0)" onclick="logout()">Logout</a></li>
+				</ul>
+			</li>
+			<li><a href=""><span class="fa fa-bell"></span></a></li>
+		</ul>
+	</div>
+	<div id="wrapper">
+		<aside class="main-sidebar">
+			<!--user avatar -->
+			<div class="user-panel">
+				<div class="avatar">
+					<img src="../imageProduct/avatarUser1.png" width="60px"height="60px">
+				</div>
+				<div class="info">
+					<p>Admin</p>
+				</div>
+			</div>
+			<!-- sidebar menu -->
+			<div id="nav">
+				<ul class="sidebar-menu">
+					<!-- exercise -->
+					<li><a href="manageProduct.html"><span class="fa fa-laptop">&nbsp;
+						&nbsp;
+						&nbsp;
+					Quản lý sản phẩm</a>
+					<ul>
+						<li><a href="manageCompany.html">Quản lý hãng</a></li>
+						<li><a href="">Quản lý loại sản phẩm</a></li>
+						<li><a href="">Nhập kho</a></li>
+						<li><a href="">Xuất kho</a></li>
+					</ul>
+				</li>
+				<!-- Education -->
+					<li class="admin"><a href="manageAccount.html"><span class="fa fa-user">&nbsp;
+					&nbsp;
+					&nbsp;
+				Quản lý tài khoản</a>
+			</li>
+			<script>
+				$(function(){
+					if(loaiAccount == 'admin'){
+						$('.admin').show();
+					}else{
+						$('.admin').hide();
+					}
+				});
+			</script>
+			<!-- Skill -->
+			<li><a href="manageCustomer.html"><span class="fa fa-users">&nbsp;
+				&nbsp;
+				&nbsp;
+			Quản lý khách hàng</a></li>
+			<!-- Contact -->
+			<li><a href="doanhthu.html"><span class="fa fa-money">&nbsp;
+				&nbsp;
+				&nbsp;
+			Quản lý doanh thu</a>
+			<ul>
+				<li><a href="">Thống kê theo sản phẩm</a></li>
+				<li><a href="">Thống kê theo doanh thu</a></li>
+			</ul>
+		</li>
+		<li><a href="quanlydonhang.html"><span class="fa fa-lock">&nbsp;
+			&nbsp;
+			&nbsp;
+		Quản lý đơn hàng</a></li>
+		<li><a href=""style="display: none;"><span class="fa fa-lock">&nbsp;
+			&nbsp;
+			&nbsp;
+		Quản trị Admin</a></li>
+	</ul>
+</div>
+<!--menu end-->
+		</aside>

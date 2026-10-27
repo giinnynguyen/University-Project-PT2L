@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Đăng ký</title>
+		<link rel="icon" type="image/icon" href="img/icon.png">
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/form.css" rel="stylesheet"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="admin/js/data.js"></script>
+		<script src="js/w3data.js"></script>
+		<script src="admin/js/cleave.min.js"></script>
+		<script src="admin/js/cleave-phone.vn.js"></script>
+		<script src="admin/js/validate.js"></script>
+		<script>
+		$(function(){
+			$(".form").submit(function(e){
+				var x = $(this).serializeArray();
+				var id=0;
+				
+				for (i=0;i< khach_hang.length;i++){
+					if(khach_hang[i].email == x[0].value){
+						e.preventDefault();
+						return false;
+					}
+					if(id < parseInt(khach_hang[i].ma_khach_hang)){
+					id =  parseInt(khach_hang[i].ma_khach_hang);
+					}
+				}
+				khach_hang.push({
+					"ma_khach_hang":(id+1),
+		"ten_khach_hang": x[4].value,
+		"phai": x[2].value,
+		"ngay_sinh": x[5].value,
+		"dia_chi":  x[6].value,
+		"dien_thoai":  x[3].value,
+		"email":  x[0].value,
+		"pass":  x[1].value
+					});
+					window.localStorage.khach_hang  = encodeURIComponent(JSON.stringify(khach_hang));
+					alert("Thêm thành công !");
+					window.location ="login-user.html";
+				
+				
+				e.preventDefault();
+			});
+		
+		});
+		
+		</script>
+		
+		
+		
+		<style>
+		.login-bg{
+		height: 750px;
+		}
+		.form{
+			width: 300px;
+			top: 20px;
+		}
+		input[type="radio"]{
+			width: 30px !important;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="logo wrap">
+			<a href="index.html"><img src="img/logo_form.png"/></a>
+		</div>
+		<div class="login-content">
+			<div class="login-bg">
+				<img src="img/background-login.jpg">
+				<form name="signup" class="form" method="post">
+					
+					<div class="form-group" >
+						<label for="email" class="form-label form-label--required">
+							Email: <span class="text-muted">(abc@email.com)</span> </label>
+							<div class="form-addon" data-states-for="email">
+								<div class="form-addon__addon">
+									<span class="fa fa-envelope"></span>
+								</div>
+								<input type="text" id="email" name="email" class="form-input"
+								placeholder="Email" required> <span
+								class="form-addon__icon icon-valid"></span> <span
+							class="form-addon__icon icon-invalid"></span>
+						</div>
+						<div data-errors-for="email">
+							<small class="email-empty">
+							Email không được để trống. </small>
+							<small class="email-invalid">
+							Email chưa đúng định dạng. </small>
+							<small class="email-message">
+							</small>
+						</div>
+					</div>
+					
+					<!--<div class="form-group" >
+							<label for="username" class="form-label form-label--required">
+								Tài khoản: </label>
+							<div class="form-addon" data-states-for="username">
+									<div class="form-addon__addon">
+											<span class="fa fa-user"></span>
+									</div>
+									<input type="text" id="username" name="username" class="form-input"
+										placeholder="Tài khoản" required> <span
+										class="form-addon__icon icon-valid"></span> <span
+									class="form-addon__icon icon-invalid"></span>
+						</div>
+						<div data-errors-for="username">
+								<small class="user-empty">
+									Tài khoản không được để trống. </small>
+									<small class="user-message1" id="user-message">
+									</small>
+						</div>
+				</div>-->
+				
+				
+				<div class="form-group">
+					<label for="password" class="form-label form-label--required">
+						Mật khẩu <span class="text-muted">(ít nhất 6 kí tự)</span>:
+					</label>
+					<div class="form-addon" data-states-for="password">
+						<div class="form-addon__addon">
+							<span class="fa fa-key"></span>
+						</div>
+						<input type="password" id="pass" name="pass"
+						class="form-input" placeholder="********"
+						required> <span class="form-addon__icon icon-valid"></span>
+						<span class="form-addon__icon icon-invalid"></span>
+					</div>
+					<div data-errors-for="password">
+						<small class="pass-invalid">
+						Mật khẩu ít nhất 6 kí tự </small>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="form-label form-label--required">
+						Giới tính:
+					</label>
+					<div class="form-addon" style="padding: 10px 0">
+						<div class="form-addon__addon">
+							<span class="fa fa-venus-mars"></span>
+						</div>
+						<input type="radio" name="gender" class="form-input" checked value="Nam"> Nam
+						<input type="radio" name="gender" class="form-input" value="Nữ"> Nữ
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="form-label form-label--required">
+						Điện thoại :
+					</label>
+					<div class="form-addon" data-states-for="password">
+						<div class="form-addon__addon">
+							<span class="fa fa-phone"></span>
+						</div>
+						<input type="text" name="phone"
+						class="form-input input-phone"
+						required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="form-label form-label--required">
+						Tên :
+					</label>
+					<div class="form-addon" data-states-for="password">
+						<div class="form-addon__addon">
+							<span class="fa fa-male"></span>
+						</div>
+						<input type="text" name="name"
+						class="form-input"
+						required>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="form-label form-label--required">
+						Ngày sinh :
+					</label>
+					<div class="form-addon" data-states-for="password">
+						<div class="form-addon__addon">
+							<span class="fa fa-calendar"></span>
+						</div>
+						<input type="date" name="date"
+						class="form-input" maxlength="11"
+						required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="form-label form-label--required">
+						Địa chỉ :
+					</label>
+					<div class="form-addon" data-states-for="password">
+						<div class="form-addon__addon">
+							<span class="fa fa-map-marker"></span>
+						</div>
+						<input type="text" name="address"
+						class="form-input" maxlength="11"
+						required>
+					</div>
+				</div>
+				<div class="form-footer">
+					<div class="forgot-pass">
+						<a href="login-user.html">Đăng nhập</a>
+					</div>
+					<input type="submit" class="button" id="register" value="Đăng ký">
+				</div>
+				
+			</form>
+			
+			<script>
+			//email
+			$("#email").blur(function(){
+				var email = $("#email").val();
+				var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				if(email == ""){
+					$('.email-invalid').css("display","none");
+			$('.email-empty').css("display","inline-block");
+			return;
+			}else if(!email.match(re)){
+			$('.email-empty').css("display","none");
+			$('.email-invalid').css("display","inline-block");
+			return;
+			}
+				else{
+			$('.email-empty').css("display","none");
+			$('.email-invalid').css("display","none");
+			}
+			});
+			
+			//username
+			$("#username").blur(function(){
+				var username = $("#username").val();
+				if(username == ""){
+			$('.user-empty').css("display","inline-block");
+			return;
+			}else{
+			$('.user-empty').css("display","none");
+			}
+			});
+			
+			//password
+			$("#pass").blur(function(){
+			var pass = $("#pass").val();
+				if(pass == "" ||pass.length < 6 ){
+			$('.pass-invalid').css("display","inline-block");
+			}
+				else{
+			$('.pass-invalid').css("display","none");
+			return;
+			}
+			});
+			
+			
+			
+			
+			</script>
+			<script>
+				var cleave = new Cleave('.input-phone', {
+    phone: true,
+    phoneRegionCode: 'VN'
+});
+			</script>
+		</div>
+	</div>
+</body>
+</html>

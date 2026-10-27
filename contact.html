@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Liên hệ</title>
+    <link rel="icon" type="image/icon" href="img/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/w3data.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="admin/js/data.js"></script>
+    <script src="js/javascript.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    <link rel="stylesheet" href="css/remodal.css">
+<link rel="stylesheet" href="css/remodal-default-theme.css">
+<script src="js/remodal.min.js"></script>
+    <style type="text/css">
+    #map{
+    width: 100%;
+    height: 400px;
+    background-color: #ccc;
+    }
+    #body .container{
+    margin: 50px auto;
+    }
+    textarea {
+  resize: none;
+}
+.form-label {
+  font-size: 12px;
+  color: #5e9bfc;
+  margin: 0;
+  display: block;
+  opacity: 1;
+  -webkit-transition: .333s ease top, .333s ease opacity;
+  transition: .333s ease top, .333s ease opacity;
+}
+.form-control {
+  border-radius: 0;
+  border-color: #ccc;
+    border-width: 0 0 2px 0;
+    border-style: none none solid none;
+    box-shadow: none;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #5e9bfc;
+}
+.js-hide-label {
+  opacity: 0;   
+}
+.js-unhighlight-label {
+  color: #999 
+}
+.btn-start-order {
+  background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
+    border-radius: 3px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+  border-color: #5e9bfc;
+  color: #5e9bfc;
+}
+    </style>
+  </head>
+  <body>
+     <!-- header -->
+    <div w3-include-html="include/header.html"></div>
+    <!-- header end -->
+    <!-- navigation menu -->
+    <!-- nav -->
+    <div w3-include-html="include/nav.html"></div>
+    <!-- nav end -->
+  <div class="body-page" id="body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>GỬI PHẢN HỒI</h1><br>
+          <form id="contact-form" class="form" action="#" method="POST" role="form">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Tên" tabindex="1" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" tabindex="2" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Tiêu đề" tabindex="3">
+                  </div>
+                  <div class="form-group">
+                    <textarea rows="5" cols="50" name="message" class="form-control" id="message" placeholder="Tin nhắn..." tabindex="4" required></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-start-order">Gửi</button>
+                  </div>
+                </form>
+        </div>
+        <div class="col-md-6">
+          <h1>ĐỊA CHỈ SHOP</h1>
+          <div id="map"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1aZlT0IiVo8VK_dx_PJYNWAA7D8U" width="100%" height="100%"></iframe></div>
+        </div>
+      </div>
+      </div><!--the-end-contaner-->
+      </div><!--the-end-body-page-->
+         <div w3-include-html="include/footer.html"></div>
+
+      </body>
+    </html>
+     <script type="text/javascript">w3IncludeHTML();</script>

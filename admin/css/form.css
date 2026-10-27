@@ -1,0 +1,76 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.container {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	background: #ddd;
+}
+.login {
+	width: 380px;
+	height: 300px;
+	align-self: center;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 2px 3px 4px #808080;
+}
+.form-controll {
+	padding-bottom: 15px;
+}
+.form-controll input[type="text"],.form-controll input[type="password"] {
+	padding: 9px;
+	align-self: center;
+	margin: 0px auto;
+	width: 95%;
+	color: #7E7A88;
+	 border-radius: 5px;
+	 outline: none;
+	 border: 1px solid #ddd;
+	 font-size: 14px;
+}
+.form-controll  input[type="submit"]{
+	padding: 7px;
+	 background-color: #4187C3;
+	 border: 1px solid #ddd;
+	 border-radius: 5px;
+	 color: #fff;
+	cursor: pointer;
+}
+ .left {
+	float: left;
+}
+.right{
+	float: right;
+}
+.login .dangky{
+	width: 50%;
+}
+form {
+	padding: 20px;
+	box-sizing: border-box;
+  padding-bottom: 60px;
+}
+.center {
+	text-align: center;
+}
+.login p{
+	color: #7E7A88;
+}
+.login a{
+	text-decoration: none;
+	color: #3C8EBD;
+}
+.login h1{
+	color: #fff;
+	background-color: #4187C3;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.fontawesome{
+	font-family: Arial ,FontAwesome;
+}

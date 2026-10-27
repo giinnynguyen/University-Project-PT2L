@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="file" onchange="previewFile()"><br>
+<img src="" height="200" alt="Image preview...">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script>
+ /* 
+   function previewFile(){
+   	
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+       reader.onloadend = function () {
+           product[0].image = reader.result;
+           preview.src = product[0].image;
+       }
+        
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+       window.localStorage.product = encodeURIComponent(JSON.stringify(product));
+       console.log(product[0].image);
+  }
+
+  previewFile();*/  //calls the function named previewFile()
+   var ct_don_hang;
+    
+ if (!localStorage.ct_don_hang ) {
+    $.getJSON("js/ct_don_hang.json", function( data ) {
+        window.localStorage.ct_don_hang  = encodeURIComponent(JSON.stringify(data));
+        ct_don_hang = JSON.parse(JSON.parse(JSON.stringify(decodeURIComponent(window.localStorage.ct_don_hang))) );
+    });
+  }else
+  ct_don_hang = JSON.parse(JSON.parse(JSON.stringify(decodeURIComponent(window.localStorage.ct_don_hang))) );
+        
+        console.log(ct_don_hang);
+
+  </script>
+</body>
+</html>

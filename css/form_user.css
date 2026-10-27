@@ -1,0 +1,148 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.container {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	background: #ddd;
+}
+.login {
+	width: 1138px;
+	height: 469px;
+	align-self: center;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 2px 3px 4px #808080;
+}
+.login-form {
+	justify-content: center;
+	border: 1px solid black
+	justify-content:center;
+	width: 50px;
+}
+.form-controll {
+	padding-bottom: 15px;
+}
+.form-controll input[type="text"] {
+	padding: 9px;
+	align-self: center;
+	margin: 0px auto;
+	width: 95%;
+	color: #7E7A88;
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid #ddd;
+	font-size: 14px;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+form {
+	padding: 20px;
+	box-sizing: border-box;
+	padding-bottom: 60px;
+}
+.center {
+	text-align: center;
+}
+.login p {
+	color: #7E7A88;
+}
+.login a {
+	text-decoration: none;
+	color: #3C8EBD;
+}
+.form-controll {
+	padding-bottom: 15px;
+}
+.form-controll input[type="text"], input[type="email"], input[type="password"] {
+	padding: 10px;
+	align-self: center;
+	margin: 10px auto;
+	width: 60%;
+	color: #000;
+	outline: none;
+	border-bottom: 2px solid #ddd;
+	font-size: 14px;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	transition: 1s;
+}
+.form-controll  input[type="submit"] {
+	padding: 7px;
+	transition: 1s;
+
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	color: #000;
+	cursor: pointer;
+}
+a:active, a:visited{
+ border: none;
+}
+/* user login*/
+
+	input[type="email"]:focus,input[type="email"]:hover,input[type="password"]:focus,input[type="password"]:hover,input[type="submit"]:hover{
+			
+			border-bottom: 2px solid  #4C9ED9;
+			
+		}
+	.icon {
+		color: white;
+		display: block;
+		border: 1px solid
+		#3B5999;
+		width: 80%;
+		overflow: hidden;
+		line-height: 40px;
+		margin-top:20px;
+	}
+	.icon i {
+		padding: 10px 30px;
+		background-color: #3B5999;
+		font-size: 20px;
+		float: left;
+		color: white;
+	}
+	.icon i.fa-google-plus {
+		padding: 10px 23px;
+		background-color: red;
+		font-size: 20px;
+		float: left;
+	}
+	a{
+		outline: none;
+	}
+	.login .form-content{
+		width:50%; box-sizing:border-box; float:left;height:200px; margin-top:20px;
+	}
+	.logo{
+		padding:10px 20px; color:#D64736;
+	}
+	.login-content{
+		margin:auto;width:90%;
+	}
+	*{
+		outline: none;
+	}
+	.text-center{
+		text-align: center;
+	}
+	.button-login{
+		padding:7px 50px;display:block; outline:none;border:1px solid #3CA7D8; border-radius:20px;
+	}
+	.button-login:hover  {
+		 background-color: #4C9ED9; 
+		  color: white;
+	}
+		
+	

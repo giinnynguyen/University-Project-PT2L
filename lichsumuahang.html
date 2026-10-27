@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lịch sử mua hàng</title>
+    <link rel="icon" type="image/icon" href="img/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/w3data.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="admin/js/data.js"></script>
+    <script src="js/javascript.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    <style type="text/css">
+    #map{
+    width: 100%;
+    height: 400px;
+    background-color: #ccc;
+    }
+    #body .container{
+    margin: 50px auto;
+    }
+    textarea {
+  resize: none;
+}
+.form-label {
+  font-size: 12px;
+  color: #5e9bfc;
+  margin: 0;
+  display: block;
+  opacity: 1;
+  -webkit-transition: .333s ease top, .333s ease opacity;
+  transition: .333s ease top, .333s ease opacity;
+}
+.form-control {
+  border-radius: 0;
+  border-color: #ccc;
+    border-width: 0 0 2px 0;
+    border-style: none none solid none;
+    box-shadow: none;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #5e9bfc;
+}
+.js-hide-label {
+  opacity: 0;   
+}
+.js-unhighlight-label {
+  color: #999 
+}
+.btn-start-order {
+  background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
+    border-radius: 3px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+  border-color: #5e9bfc;
+  color: #5e9bfc;
+}
+
+.mycart {
+    background: white;
+     padding: 20px;
+    box-shadow: 0px 0px 1px 1px #ddd;
+    border: 1px solid #e6e6e6;
+}
+.page-title {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+    margin: 0 0 15px;
+}
+.page-title h1 {
+    padding: 0 0 10px;
+}
+.page-title h1, .category-title h1 {
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 36px;
+    color: #333333;
+}
+.page-title h1, .page-title h2 {
+    margin: 0;
+    font-size: 19px;
+    color: #ea7696;
+    text-transform: uppercase;
+}
+.buttons-set {
+    clear: both;
+    margin: 20px 0 0;
+    padding: 8px 0 0;
+    border-top: 1px solid #f2f2f2;
+    text-align: right;
+}
+.buttons-set .back-link {
+    float: left;
+    margin: 0;
+}
+.back-link {
+    margin-top: 10px;
+}
+.don_hang table{
+  width: 100%;
+  text-indent: 10px;
+}
+.don_hang table tr{
+  border-bottom: 1px solid #ddd;
+}
+.don_hang table tr:nth-child(even){
+  background-color: #F3F3F3;
+}
+.don_hang table tr td{
+  padding: 10px 0;
+}
+    </style>
+  </head>
+  <body>
+     <!-- header -->
+    <div w3-include-html="include/header.html"></div>
+    <!-- header end -->
+    <!-- navigation menu -->
+    <!-- nav -->
+    <div w3-include-html="include/nav.html"></div>
+    <!-- nav end -->
+  <div class="body-page" id="body">
+    <div class="container">
+      <div class="row">
+          <div class="mycart">
+              <div class="page-title">
+                <h1>Đơn hàng của tôi</h1>
+              </div>
+              <div class="don_hang">
+                  <table>
+                      <thead>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thao tác</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td><span class="fa fa-trash"></span></td>
+                        </tr>
+                        <tr>
+                          <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td><span class="fa fa-trash"></span></td>
+                        </tr>
+                        <tr>
+                          <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td><span class="fa fa-trash"></span></td>
+                        </tr>
+                        <tr>
+                          <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td>abc</td>
+                        <td><span class="fa fa-trash"></span></td>
+                        </tr>
+
+                      </tbody>
+                  </table>
+
+              </div>
+              <div class="button-set">
+                <p class="back-link">
+                    <a href="">Quay l</a>
+                </p>
+              </div>
+          </div>
+      </div>
+      </div><!--the-end-contaner-->
+      </div><!--the-end-body-page-->
+         <div w3-include-html="include/footer.html"></div>
+
+      </body>
+    </html>
+     <script type="text/javascript">w3IncludeHTML();</script>

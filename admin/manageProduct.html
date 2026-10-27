@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Product manage</title>
+		<meta charset="utf-8">
+		
+		<link rel="stylesheet" href="css/product.css">
+		<link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css">
+		<link href="css/bootstrap-combined.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/admin.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="js/cleave.min.js"></script>
+<script src="js/cleave-phone.vi.js"></script>
+<script type="text/javascript"  src="../js/w3data.js"></script>
+<script type="text/javascript">
+
+	 $(function(){
+
+	 	 if(login=="false"){
+	 	  window.location = "admin.html";
+	 	 }
+	 });
+</script>
+	</head>
+	<body>
+			<div w3-include-html="include/header.html"></div>
+<section class="main-content" id="main-content">
+<div class="content-header">
+	<a data-toggle="modal" href="#form-content"class="btn btn-primary fa fa-plus">&nbsp;
+	Thêm</a>
+	<input placeholder="Nhập tên.."  id="search">
+	<div class="company">
+		Hãng:<select id="selectCompany" style="margin-bottom: 0">
+			<option>Tất cả</option>
+		</select>
+	</div>
+<!-- import/ export start -->
+<div class="import" style="display: inline-block; float: right;">
+	<a id="a"></a>
+    <a class="btn btn-warning" href="javascript:void(0)"  onclick="Export_Product()">Export</a>
+    <label for="fileImport" class="btn btn-success">Chọn file để import</label>
+    <input type="file" id="fileImport" title="Chọn tệp json để import" style="display: none">
+    <a class="btn btn-success" href="javascript:void(0)"  onclick = "Import_Product()">Import</a>
+</div>
+<!-- import/ export end -->
+</div>
+<div class="datagrid table-responsive">
+	<table class="paginated"id="myTable">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Tên sp</th>
+				<th>Số lg</th>
+				<th>Hãng</th>
+				<th>Giá (VNĐ)</th>
+				<th>Sale</th>
+				<th>Ảnh</th>
+				<th>Ngày tạo</th>
+				<th>Mô tả</th>
+				<th>&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody id="product">
+		</tbody>
+		<tfoot>
+		<tr>
+			<td colspan="15">
+			</tr>
+			</tfoot>
+		</table></div>
+	</section>
+</div>
+<!--add start-->
+<div id="form-content" class="modal hide fade in"style="display: none; ">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">×</a>
+		<h3>Tạo sản phẩm mới</h3>
+	</div>
+	<div>
+		<form class="contact"name="form">
+			<fieldset>
+				<div class="modal-body">
+					<ul class="nav nav-list">
+						<li class="nav-header">Tên sản phẩm</li>
+						<li><input class="input-xlarge"value=""type="text"name="productName"/></li>
+						<li class="nav-header">Số lượng</li>
+						<li><input class="input-xlarge"value=""type="number"name="amount"min="0"/></li>
+						<li class="nav-header">Hãng</li>
+						<li>
+							<select id="companyNew" name="company">
+								<option>Apple</option>
+								<option>Asus</option>
+								<option>Acer</option>
+								<option>Dell</option>
+								<option>HP</option>
+								<option>Lenovo</option>
+							</select>
+						</li>
+						<li class="nav-header">Giá</li>
+						<li><input class="input-xlarge input-price"value=""type="text"name="price"min="0"/></li>
+						<li class="nav-header">Sale</li>
+						<li><input class="input-xlarge input-sale"value=""type="text" name="sale"min="0"/></li>
+						<li class="nav-header">Ảnh</li>
+						<li><input class="input-xlarge"value=""type="file"name="image"accept="image/*"/></li>
+						<li class="nav-header">Mô tả
+							<ul>
+								<li class="nav-header">CPU</li>
+								<li><input list="cpu" class="input-xlarge"value=""type="text"name="cpu"/></li>
+								<datalist id="cpu">
+									<option value="Intel core i3">
+									<option value="Intel core i5">
+									<option value="Intel core i7">
+									<option value="Intel Celeron">
+									<option value="Intel Pentium">
+									<option value="AMD">
+									<option value="AMD Sempron">
+									<option value="AMD Athlon">
+								</datalist>
+
+								<li class="nav-header">Bộ nhớ đệm</li>
+								<li><input list="buffer" class="input-xlarge"value=""type="text"name="bufferMemory"/></li>
+								<datalist id="buffer">
+									<option value="3MB Cache">
+									<option value="4MB Cache">
+									<option value="2MB Cache">
+									<option value="1MB Cache">
+									<option value="5MB Cache">
+									<option value="6MB Cache">
+									<option value="7MB Cache">
+								</datalist>
+								<li class="nav-header">RAM</li>
+								<li><input list="ram" class="input-xlarge"value=""type="text"name="ram"/></li>
+								<datalist id="ram">
+									<option value="DDR1">
+									<option value="DDR2">
+									<option value="DDR3">
+									<option value="DDR3L">
+								</datalist>
+
+								<li class="nav-header">Ổ cứng</li>
+								<li><input class="input-xlarge"value=""type="text"name="hdd"/></li>
+								<li class="nav-header">Đĩa quang</li>
+								<li><input class="input-xlarge"value=""type="text"name="dvd"/></li>
+								<li class="nav-header">Đồ họa</li>
+								<li><input class="input-xlarge"value=""type="text"name="vga"/></li>
+								<li class="nav-header">Màn hình</li>
+								<li><input class="input-xlarge"value=""type="text"name="screen"/></li>
+								<li class="nav-header">Âm thanh</li>
+								<li><input class="input-xlarge"value=""type="text"name="audio"/></li>
+								<li class="nav-header">Wifi</li>
+								<li><input class="input-xlarge"value=""type="text"name="wifi"/></li>
+								<li class="nav-header">LAN</li>
+								<li><input class="input-xlarge"value=""type="text"name="lan"/></li>
+								<li class="nav-header">Pin</li>
+								<li><input class="input-xlarge"value=""type="text"name="pin"/></li>
+								<li class="nav-header">HĐH</li>
+								<!-- <li><input class="input-xlarge"value=""type="text"name="hdh"/></li>					 -->
+								<input list="os" class="input-xlarge" name="hdh" type="text">
+								<datalist id="os">
+								<option value="Window">
+									<option value="MAC OS">
+										<option value="Free DOS">
+											<option value="Linux">
+												<option value="Mac OS X">
+													</datalist>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-success"id="submit">Tạo sản phẩm</button>
+							<a href="#"class="btn"data-dismiss="modal">Đóng</a>
+						</div>
+					</div>
+					<!--add end-->
+					<div id="myModal"class="modal1">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<h1 id="h1"></h1>
+						<table id="tableDetail"class="table"></table>
+					</div>
+				</div>
+				<!-- Modal content -->
+			</div>
+			<script>
+			var cleave = new Cleave('.input-price', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+			var cleave1 = new Cleave('.input-sale', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+			</script>
+			<script type="text/javascript"src="../js/bootstrap.min.js"></script>
+			<script type="text/javascript"src="js/data.js"></script>
+			<script type="text/javascript"src="js/product.js"></script>
+		</body>
+	</html>

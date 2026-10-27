@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mua nhiều</title>
+    <link rel="icon" type="image/icon" href="img/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/w3data.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="admin/js/data.js"></script>
+   
+    <!--  -->
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/bestSale.js"></script>
+     <script src="js/javascript.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/product.css">
+    <link rel="stylesheet" href="css/remodal.css">
+<link rel="stylesheet" href="css/remodal-default-theme.css">
+<script src="js/remodal.min.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <div w3-include-html="include/header.html"></div>
+    <!-- header end -->
+    <!-- navigation menu -->
+    <!-- nav -->
+    <div w3-include-html="include/nav.html"></div>
+    <!-- nav end -->
+    <div class="body-page" id="body">
+      <!-- our product -->
+      <div class="showProduct" id="product">
+        <!--    sort start -->
+        <div class="sort">
+          <div class="sortByCompany">
+            <span>Tìm theo hãng: </span>
+            <select name="sortByCompany" id="selectCompany">
+              <option>Tất cả</option>
+              </select>
+            </div>
+            
+            <div class="sortByPrice">
+              <span>Giá: </span>
+              <select name="sortByPrice" id="sortByPrice">
+                <option>Tăng dần</option>
+                <option>Giảm dần</option>
+                <option>5tr-10tr</option>
+                <option>10tr-15tr</option>
+                <option>15tr-20tr</option>
+                <option>Trên 20tr</option>
+              </select>
+            </div>
+            
+          </div>
+          <!-- sort end -->
+          <div class="container paginated" id="container">
+            <div style="height: 40px"></div>
+            </div><!--.container-->
+            <div class="clear-fix"></div>
+          </div>
+          <div w3-include-html="include/footer.html"></div>
+          
+        </body>
+      </html>
+      <script type="text/javascript">w3IncludeHTML();</script>

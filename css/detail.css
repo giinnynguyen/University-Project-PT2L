@@ -1,0 +1,70 @@
+.body-page{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.body-page h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.body-page ins{
+    text-decoration: none;
+}
+.body-page p{
+    margin-top: 0px;
+}
+.body-page .push span{
+    padding-top: 30px;
+display: inline-block;
+padding-right: 10px;
+}
+.body-page .info-tech table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.body-page .info-tech table td{
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.line-comment{
+    position: relative;
+    margin-bottom: 50px;
+}
+.line-comment span{
+    display: inline-block;
+}
+.line-comment .user-com{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: deepskyblue;
+    border-radius: 4px;
+}
+.line-comment .com-com{
+    position: absolute;
+    top:0;
+    left: 30px;
+    width: 95%;
+    border-radius: 4px;
+}
+.line-comment .com-btn{
+    position: absolute;
+    top:30px;
+    right: 20px;
+}
+#product-image img{
+    width: 80%;
+}
+.priceAfterSale{
+    margin-top: 10px;
+}
+.priceAfterSale span{
+    color: red;
+    font-size: 26px;
+}
+.priceDetail{
+    margin-top: 10px !important;
+}

@@ -1,0 +1,227 @@
+.one-step-checkout {
+    background: none;
+    border: none;
+    padding: 0px;
+    float: left;
+    width: 100%;
+    /* margin: 28px 0; */
+}
+ul{
+	padding: 0;
+}
+ul li{
+	list-style: none;
+}
+.one-step-checkout h1.checkout_header {
+    text-transform: uppercase;
+    color: #3d3d3d;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 0;
+}
+.one-step-checkout p.subtitle {
+    font-size: 16px;
+    font-weight: normal;
+    color: #3d3d3d;
+    padding: 0;
+    margin: 0;
+}
+.subtitle, .sub-title {
+    clear: both;
+    padding: 15px 0 0;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0 0 6px;
+    color: #e25203;
+}
+.one-step-checkout .address-order {
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+}
+.one-step-checkout .address-info-3-columns {
+    width: 33%;
+    float: left;
+    margin-right: 2%;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.one-step-checkout .address-information .billing_address {
+    float: left;
+    width: 99%;
+    margin-bottom: 15px;
+    background: white;
+    border: 1px solid #ebebeb;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+}
+.one-step-checkout h3 {
+    background-color: #F39801 !important;
+}
+.one-step-checkout h3 {
+    text-indent: 54px;
+    padding: 15px 1px;
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-left: 0px;
+    margin-bottom: 0;
+    margin: 0;
+}
+.one-step-checkout .group-select {
+    margin-top: 0;
+    border: 0;
+    background: none;
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+
+.one-step-checkout .group-select {
+    margin-right: 0;
+}
+.one-step-checkout .group-select ul{
+	margin-bottom: 0px !important;
+}
+.address-information ul li {
+    padding: 0;
+    width: 92%;
+    margin: 10px 0 0;
+    float: left;
+    box-sizing: content-box;
+}
+#one-step-checkout-form label {
+    color: #3d3d3d;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 5px;
+    float: left;
+    background: none;
+    padding: 0;
+}
+.two-fields input[type="text"]{
+	    height: 26px!important;
+    padding: 4px 6px;
+    line-height: 26px;
+    width: 100%;
+}
+.two-fields.last {
+    float: right;
+}
+
+.two-fields {
+    width: 48%;
+    float: left;
+}
+.one-field{
+	width: 100%;
+}
+.one-field input[type="text"]{
+	width: 100%;
+}
+.one-step-checkout .onestepcheckout-shipping-payment-review {
+    float: right;
+    width: 65%;
+    margin-bottom: 30px;
+}
+.one-step-checkout .order-info-3-columns {
+    float: left;
+    width: 48%;
+    margin: 0 3% 0 0;
+}
+.order-review-section {
+    float: right;
+    width: 33%;
+    margin: 0;
+    background: white;
+    border: 1px solid #EBEBEB;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+}
+.shipping-method, .payment-method, .order-review-info {
+    position: relative;
+}
+.clear {
+    width: 100%;
+    height: 0px;
+    clear: both;
+    font-size: 0px;
+    line-height: 0px;
+}
+.order-review-section .payment-method .onestepcheckout-payment-methods {
+    float: left;
+    width: 92%;
+    padding: 7px 4% 5px;
+    margin: 0;
+    box-sizing: content-box;
+}
+.order-review-section .payment-method .onestepcheckout-payment-methods .sp-methods {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.order-review-section .payment-method .onestepcheckout-payment-methods .sp-methods dt {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 5px 0;
+    /* background: #f4f4f4; */
+}
+.sp-methods input[type="radio"]{
+	display: inline-block;
+	float: left;
+	margin: 3px 4px 4px 0;
+}
+.abc{
+	float: left;
+	width: 30%;
+}
+.onestepcheckout-review-info {
+    float: left;
+    width: 60%;
+    margin: 25px 0 0;
+    background: white;
+    border: 1px solid #EBEBEB;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+}
+.data-table{
+	border: none !important;
+    border-top: 1px solid #ededed !important;
+    border-bottom: 1px solid #ededed !important;
+    clear: both;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.data-table tr{
+	border-bottom: 1px solid #ddd;
+}
+.data-table td{
+	padding: 10px 0 10px 5px;
+}
+.data-table td:first-child{
+	width: 70%;
+}
+.data-table td:nth-child(2){
+	width: 15%;
+}
+.data-table td:nth-child(3){
+	width: 15%;
+	color: #bf9a61;
+}
+a.submit{
+	background-color: red;
+	padding: 10px;
+    bottom: -50px;
+    left: 40%;
+}
+tfoot{
+	border: none;
+}
+.data-table tfoot tr{
+	border-bottom: none;
+}

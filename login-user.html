@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Đăng nhập</title>
+	<link rel="icon" type="image/icon" href="img/icon.png">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/form.css" rel="stylesheet"/>
+	<script src="admin/js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="admin/js/data.js"></script>
+	<script type="text/javascript">
+	if (loginUser.login) {
+		window.location="index.html";
+	};
+
+	$(function(){
+		$("form.form").submit(function(e){
+			var username   = $("#username").val();
+			var pass  = $("#pass").val();
+			for (var i = 0; i < khach_hang.length; i++) {
+				console.log(username);
+				console.log(khach_hang[i].email);
+				console.log(username==khach_hang[i].email);
+				if(khach_hang[i].email == username){
+					if(khach_hang[i].pass== pass){
+						loginUser.login=true;
+							loginUser.ma_khach_hang=khach_hang[i].ma_khach_hang;
+						loginUser.userName =khach_hang[i].ten_khach_hang;
+						localStorage.loginUser = encodeURIComponent(JSON.stringify(loginUser));
+						window.location  ="index.html";
+					}else
+					{
+						alert("Tên đăng nhập hoặc mật khẩu sai");
+						break;
+					}
+				}
+			};
+			e.preventDefault();
+			return false;
+
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="logo wrap">
+		<a href="index.html"><img src="img/logo_form.png"/></a>
+	</div>
+	<div class="login-content">
+		<div class="login-bg">
+			<img src="img/background-login.jpg">
+			<form name="signup" class="form" method="post">
+				<div class="form-group" >
+					<label for="username" class="form-label form-label--required">
+						Email: </label>
+						<div class="form-addon" data-states-for="username">
+							<div class="form-addon__addon">
+								<span class="fa fa-user"></span>
+							</div>
+							<input type="text" id="username" name="username" class="form-input"
+							placeholder="Tài khoản" required> <span
+							class="form-addon__icon icon-valid"></span> <span
+							class="form-addon__icon icon-invalid"></span>
+						</div>
+						<div data-errors-for="email">
+							<small class="user-empty">
+								Tài khoản không được để trống. </small>
+								<small class="user-message">
+								</small>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="password" class="form-label form-label--required">
+								Mật khẩu :
+							</label>
+							<div class="form-addon" data-states-for="password">
+								<div class="form-addon__addon">
+									<span class="fa fa-key"></span>
+								</div>
+								<input type="password" id="pass" name="pass"
+								class="form-input" placeholder="********"
+								required> <span class="form-addon__icon icon-valid"></span>
+								<span class="form-addon__icon icon-invalid"></span>
+							</div>
+							<div data-errors-for="password">
+								<small class="pass-invalid">
+									Mật khẩu ít nhất 6 kí tự </small>
+								</div>
+							</div>
+
+							<!-- 						<div class="form-group"> -->
+							<!-- 								<input type="checkbox" name="savepass" > -->
+							<!-- 							<label for="savepass"> -->
+							<!-- 								Nhớ mật khẩu -->
+							<!-- 							</label> -->
+							<!-- 						</div> -->
+							<div class="form-footer">
+								<div class="forgot-pass">
+									<a href="#">Quên mật khẩu</a>
+									<a href="sign-up.html">Đăng ký</a>
+								</div>
+								<button class="button" type="submit" id="login">Đăng nhập</button>
+							</div>
+
+						</form>
+
+						<script>
+						$("#username").blur(function(){
+							var username = $("#username").val();
+							if(username == ""){
+								$('.user-empty').css("display","inline-block");
+								return;
+							}else{
+								$('.user-empty').css("display","none");
+							}
+						});
+						$("#pass").blur(function(){
+							var pass = $("#pass").val();
+							if(pass == ""){
+								$('.pass-invalid').css("display","inline-block");
+								return;
+							}else{
+								$('.pass-invalid').css("display","none");
+								return;
+							}
+						});
+
+						</script>
+					</div>
+				</div>
+			</body>
+			</html>

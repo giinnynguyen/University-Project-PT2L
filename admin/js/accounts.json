@@ -1,0 +1,34 @@
+ [
+ {"ma":"1",
+ "name":"Lai",
+ "email":"laihoit96@gmail.com",
+ "pass":"12345",
+ "type":"nhân viên",
+ "status":"1",
+ "date":"1\/1\/1996"
+ },
+ {"ma":"2",
+ "name":"phung",
+ "email":"phungit",
+ "pass":"123",
+ "type":"admin",
+ "status":"1",
+ "date":"1\/1\/1996"
+ },
+ {"ma":"3",
+ "name":"Lang",
+ "email":"langchocai@gmail.com",
+ "pass":"12345678",
+ "type":"nhân viên",
+ "status":"0",
+ "date":"1\/1\/1996" }
+ ,
+ {"ma":"4",
+ "name":"Thang",
+ "email":"admin",
+ "pass":"admin",
+ "type":"admin",
+ "status":"1",
+ "date":"1\/1\/1996"
+}
+]

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QL khách hàng</title>
+<meta charset="utf-8">
+<link rel="icon" type="image/icon" href="../img/icon.png">
+
+<link rel="stylesheet" type="text/css"
+	href="../font-awesome/css/font-awesome.min.css">
+<link href="css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="js/cleave.min.js"></script>
+<script src="js/cleave-phone.vn.js"></script>
+<script type="text/javascript"  src="../js/w3data.js"></script>
+<script type="text/javascript">
+
+	 $(function(){
+
+	 	 if(login=="false"){
+	 	  window.location = "admin.html";
+	 	 }
+	 });
+</script>
+<style>
+input[type="text"] {
+	width: 100%;
+}
+.gender {
+	display: inline-block;
+	margin-left: 20px;
+}
+#gender {
+	width: 80px;
+
+}
+textarea{
+	width: 100%;
+	resize: none;
+}
+.modal-body input[type="password"]{
+    height: 30px;
+    width: 100%;
+}
+.modal-body input[type="date"]{
+	width: 100%;
+	height: 30px;
+}
+#table_kh1 tr td:nth-child(5){
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: inline-block;
+	width: 100%;
+}
+#table_kh1 tr th:nth-child(5){
+	width: 100px;
+}
+#table_kh1 tr td:nth-child(7){
+	text-align: left;
+}
+</style>
+</head>
+<body>
+		<div w3-include-html="include/header.html"></div>
+		<section class="main-content" id="main-content">
+			<div class="content-header">
+				<a data-toggle="modal" href="#form-content"
+					class="btn btn-primary fa fa-plus">&nbsp; Thêm</a> <input
+					placeholder="Tìm kiếm..." id="search">
+
+				<div class="gender">
+					<span>Phái:</span> <select id="gender" style="margin-bottom: 0">
+						<option>Tất cả</option>
+						<option>Nam</option>
+						<option>Nữ</option>
+					</select>
+				</div>
+
+				<div class="gender">
+					<span>Sắp xếp:</span> <select id="sort" style="margin-bottom: 0">
+						<option>A-Z</option>
+						<option>Z-A</option>
+						<option>Ngày sinh</option>
+					</select>
+				</div>
+				
+				<!-- import/ export start -->
+				<div class="import" style="display: inline-block; float: right;">
+				
+					<a id="a"></a> <a class="btn btn-warning" href="javascript:void(0)"
+						onclick="Export_Product()">Export</a> <label for="fileImport"
+						class="btn btn-success">Chọn file để import</label> <input
+						type="file" id="fileImport" title="Chọn tệp json để import"
+						style="display: none"> <a class="btn btn-success"
+						href="javascript:void(0)" onclick="Import_Product()">Import</a>
+				</div>
+				<!-- import/ export end -->
+			</div>
+			<div class="datagrid">
+				<table class="paginated" id="table_kh1">
+					<thead>
+						<tr>
+							<th>Mã KH</th>
+							<th>Tên KH</th>
+							<th>Phái</th>
+							<th>Ngày sinh</th>
+							<th>Địa chỉ</th>
+							<th>Điện thoại</th>
+							<th>Email</th>
+							<th>Mật khẩu</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody id="product">
+					</tbody>
+					<tfoot>
+					</tfoot>
+				</table>
+			</div>
+			</section>
+	</div>
+	<!--add start-->
+	<div id="form-content" class="modal hide fade in"
+		style="display: none;">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+			<h3>Khách hàng mới</h3>
+		</div>
+		<div>
+			<form class="contact validate-form" id="validate-form" name="form">
+				<fieldset>
+					<div class="modal-body">
+						<ul class="nav nav-list">
+							<li class="nav-header">Tên khách hàng</li>
+							<li class="input-holder"><input id="name" value="" type="text"
+								name="name" required/>
+								<span class="error">&times</span>
+								<span class="check fa fa-check"></span>
+								</li>
+								
+							<li style="display: inline-block" class="nav-header">Phái :</li>
+							<li style="display: inline-block"><input type="radio" name="gender" value="Nam" checked>Nam &nbsp; <input
+								type="radio" name="gender" value="Nữ">Nữ</li>
+								
+							<li class="nav-header">Ngày sinh (dd/mm/yyyy)</li>
+							<li class="input-holder"><input id="birthday" type="date" name="birthday">
+							<span class="error">&times</span>
+							<span class="check fa fa-check"></span>
+							</li>
+							
+							<li class="nav-header">Địa chỉ</li>
+							<li class="input-holder"><input type=text id="address" 
+								name="address"><span class=error>&times</span>
+								<span class="check fa fa-check"></span>
+								</li>
+								
+							<li class="nav-header">Điện thoại (096 612 3456 hoặc 0123 456 7892)</li>
+							<li class="input-holder"><input class="input-element" type="text" id="phone" name="phone" />
+								<span class=error>&times</span>
+								<span class="check fa fa-check"></span>
+								</li>
+								
+							<li class="nav-header">Emai (someone@xyz.com)l</li>
+							<li class="input-holder"><input type="text" id="email" 
+								name="email"/>
+								<span class=error>&times</span>
+								<span class="check fa fa-check"></span>
+								<small class="email-mess">Email đã tồn tại</small>
+								</li>
+
+								<li class="nav-header">Password</li>
+							<li class="input-holder"><input validateType="pass" id="pass" type="password"
+								name="pass"/>
+								<span class=error>&times</span>
+								<span class="check fa fa-check"></span>
+								</li>
+						</ul>
+					</div>
+				</fieldset>
+				
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-success submit" id="submit">Thêm</button>
+			<a href="#" class="btn" data-dismiss="modal">Đóng</a>
+		</div>
+	</div>
+	<!--add end-->
+	<script>
+				$(function(){
+					$("#email").keyup(function(){
+						$("#email").parent().find(".email-mess").hide();
+						var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+    						
+						}else if(!$(this).val().match(re)){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+					$("#email").change(function(){
+						$("#email").parent().find(".email-mess").hide();
+						var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}else if(!$(this).val().match(re)){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+
+					$("#name").keyup(function(){
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+					$("#name").change(function(){
+						
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+
+					$("#pass").keyup(function(){
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+					$("#pass").change(function(){
+						
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+
+					$("#birthday").click(function(){
+						$(this).parent().find(".error").hide();
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+					$("#birthday").change(function(){
+						
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+
+
+					$("#address").keyup(function(){
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+					$("#address").change(function(){
+						
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+
+					$("#phone").keyup(function(){
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+					$("#phone").change(function(){
+						
+						if($(this).val() == ""){
+    						$(this).addClass("no-valid");
+    						$(this).parent().find(".error").show();
+    						$(this).removeClass("valid");
+    						$(this).parent().find(".check").hide();
+						}
+						else{
+							$(this).removeClass("no-valid");
+							$(this).parent().find(".error").hide();
+							$(this).addClass("valid");
+							$(this).parent().find(".check").show();
+						}
+					});
+
+				});
+			</script>
+	<script>
+	var cleave = new Cleave('.input-element', {
+	    phone: true,
+	    phoneRegionCode: 'VN'
+	});
+
+	
+	</script>
+<!-- validate form tao khách hang start -->
+	<!-- validate form tao khách hang end -->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/khach_hang.js"></script>
+</body>
+</html>
